@@ -27,13 +27,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Two builds with the Node version pinned by upstream .nvmrc
-          # (22.0.0 at 97cd13f3): does the same input give the same output
-          # on two different machines?
-          - { id: a1, node: "22.0.0" }
-          - { id: a2, node: "22.0.0" }
-          # Latest 22.x: does a newer Node change the output?
-          - { id: b1, node: "22" }
+          # Two builds with the Node version the reference server runs
+          # (22.23.4): does the same input give the same output on two
+          # different machines?
+          # (Upstream .nvmrc says 22.0.0 at 97cd13f3, but yarn install fails
+          # there: yargs@18.1.0 requires ^20.19.0 || ^22.12.0 || >=23.)
+          - { id: a1, node: "22.23.4" }
+          - { id: a2, node: "22.23.4" }
+          # Lowest 22.x that the dependencies allow: does the Node version
+          # change the output?
+          - { id: b1, node: "22.12.0" }
     steps:
       - name: Check the input
         env:
