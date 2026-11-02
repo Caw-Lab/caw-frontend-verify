@@ -1,0 +1,126 @@
+name: reproducibility
+
+# Builds one upstream commit of the CAW frontend several times and compares the
+# `files` maps of the resulting build-manifest.json. Manual only. Read-only
+# token, no secrets. All VITE_* values are fixed so the inputs are the same
+# in every job.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Upstream commit (full 40-character SHA)"
+        required: true
+        default: "97cd13f3a1423f702d411472fdd2b2a2e7bfbd59"
+
+permissions:
+  contents: read
+
+env:
+  UPSTREAM_URL: https://github.com/GilgameshCaw/Caw.git
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Two builds with the Node version pinned by upstream .nvmrc
+          # (22.0.0 at 97cd13f3): does the same input give the same output
+          # on two different machines?
+          - { id: a1, node: "22.0.0" }
+          - { id: a2, node: "22.0.0" }
+          # Latest 22.x: does a newer Node change the output?
+          - { id: b1, node: "22" }
+    steps:
+      - name: Check the input
+        env:
+          REF: ${{ inputs.ref }}
+        run: |
+          case "$REF" in
+            *[!0-9a-f]*|"") echo "ref must be a lowercase hex SHA"; exit 1;; esac
+          [ "${#REF}" -eq 40 ] || { echo "ref must be 40 characters"; exit 1; }
+
+      - uses: actions/checkout@v4
+        with:
+          path: tools
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Fetch upstream at the commit (to a job-specific directory)
+        env:
+          REF: ${{ inputs.ref }}
+          ID: ${{ matrix.id }}
+        run: |
+          set -eu
+          D="$RUNNER_TEMP/src-$ID"
+          git init -q "$D"
+          git -C "$D" remote add origin "$UPSTREAM_URL"
+          git -C "$D" fetch -q --depth 1 origin "$REF"
+          git -C "$D" checkout -q FETCH_HEAD
+          test "$(git -C "$D" rev-parse HEAD)" = "$REF"
+          echo "SRC=$D" >> "$GITHUB_ENV"
+          echo "upstream .nvmrc: $(cat "$D/.nvmrc")"
+
+      - name: Install dependencies the way the installer does
+        run: |
+          set -eu
+          # cli/src/steps/install.js: npm install --legacy-peer-deps in client/,
+          # then yarn install --ignore-platform in the frontend directory.
+          (cd "$SRC/client" && npm install --legacy-peer-deps)
+          (cd "$SRC/client/src/services/FrontEnd" && yarn install --ignore-platform)
+
+      - name: Build (inputs fixed)
+        env:
+          CAW_CLIENT_VERSION: repro
+          VITE_NETWORK_ID: "1"
+          VITE_PROJECT_ID: dummy-project-id
+        run: |
+          set -eu
+          cd "$SRC/client/src/services/FrontEnd"
+          yarn build
+          test -f dist/build-manifest.json
+
+      - name: Collect results
+        env:
+          ID: ${{ matrix.id }}
+        run: |
+          set -eu
+          mkdir -p out
+          cp "$SRC/client/src/services/FrontEnd/dist/build-manifest.json" "out/manifest-$ID.json"
+          {
+            echo "node $(node -v)"
+            echo "npm $(npm -v)"
+            echo "yarn $(yarn -v)"
+            echo "os $(. /etc/os-release; echo "$PRETTY_NAME")"
+          } > "out/env-$ID.txt"
+          node tools/scripts/list-deps.js "$SRC/client/src/services/FrontEnd/node_modules" > "out/deps-fe-$ID.txt"
+          node tools/scripts/list-deps.js "$SRC/client/node_modules" > "out/deps-client-$ID.txt"
+          wc -l out/*.txt out/*.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ matrix.id }}
+          path: out/
+          if-no-files-found: error
+
+  compare:
+    needs: build
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: results
+          pattern: result-*
+          merge-multiple: true
+      - name: Compare
+        run: |
+          set -eu
+          ls -l results
+          python3 scripts/compare_manifests.py results | tee "$GITHUB_STEP_SUMMARY"
