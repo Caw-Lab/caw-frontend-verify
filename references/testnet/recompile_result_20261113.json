@@ -1,0 +1,1194 @@
+{
+ "license": "MIT",
+ "copyright": "Copyright (c) 2026 zinsanjp and contributors",
+ "commit": "97cd13f3a1423f702d411472fdd2b2a2e7bfbd59",
+ "solc": "Version: 0.8.30+commit.73712a01.Linux.g++",
+ "solcSha256": "0xf3e987dc6ecebd4bd350c48edcbc320b46cf9e3109bd3fc3d88f1acaf4c428f7",
+ "settings": {
+  "viaIR": true,
+  "optimizer": {
+   "enabled": true,
+   "runs": 1
+  },
+  "evmVersion": "cancun"
+ },
+ "dependencies": {
+  "@openzeppelin/contracts": {
+   "version": "4.9.6",
+   "integrity": "sha512-xSmezSupL+y9VkHZJGDoCBpmnB2ogM13ccaYDWqJTfS3dbuHkgjuwDFUmaFauBCboQMGB/S5UqUl2y54X99BmA=="
+  },
+  "@openzeppelin/contracts-upgradeable": {
+   "version": "4.9.6",
+   "integrity": "sha512-m4iHazOsOCv1DgM7eD7GupTJ+NFVujRZt1wzddDPSVGpWdKq1SKkla5htKG7+IS4d2XOCtzkUNwRZ7Vq5aEUMA=="
+  },
+  "@layerzerolabs/lz-evm-protocol-v2": {
+   "version": "2.3.44",
+   "integrity": "sha512-oNtwl4HGCogFVOr45T3FfrkB0/CRW2eGAEScBw/FY/6mlncnS4dqlvrCJ3SFlK17cu1w9q0ztD3NzS9sUrb7vw=="
+  },
+  "@layerzerolabs/lz-evm-oapp-v2": {
+   "version": "2.3.44",
+   "integrity": "sha512-FNm9+OFKOl+/5JvpV6rMUoHZSePOcLtNJ+GHJuf38xPmEe0ehxFVQBw3iIfaH2dsWzRn/T7ZizV5ouId35FLdg=="
+  },
+  "@layerzerolabs/lz-evm-messagelib-v2": {
+   "version": "3.0.168",
+   "integrity": "sha512-tNrpfDu9nhB+/onG3Qzby0PFqi21HpW9dI9oa4HulW5/VfiMQllj2gKOX+BEemokdq2JQhAHvj8dTkp0euXPPg=="
+  },
+  "@layerzerolabs/oapp-evm": {
+   "version": "0.4.1",
+   "integrity": "sha512-eOoDepVSrUlVNIlnkH0Vd5Vt4lXBkSBh6Bb16vsLbaN9AryBjy4GDpsE7K4c8iWTFL9BiBXGsV7nJTkgqi+xRQ=="
+  },
+  "@layerzerolabs/oft-evm": {
+   "version": "0.0.11",
+   "integrity": "sha512-lkhEiwMrcC0CtMcHkTTnaJwOsE/tE4MiO1nbU3QcWrTOGQj0BGiH05c50+lvZeFHlObp/QpIDXELnJgd2rz29w=="
+  },
+  "solidity-bytes-utils": {
+   "version": "0.8.4",
+   "integrity": "sha512-/bjac5YR12i0plOKvGlhE51F5IWGP6rI8DJetCQlXcnwKWz/Hgf/vr+Qlk1BWz56xVcwVhmhCaDkTMnx5xvt0g=="
+  }
+ },
+ "results": {
+  "CawActions": {
+   "status": "compiled",
+   "length": 24148,
+   "seconds": 21.8,
+   "immutableRegions": [
+    [
+     523,
+     32
+    ],
+    [
+     1057,
+     32
+    ],
+    [
+     1125,
+     32
+    ],
+    [
+     1947,
+     32
+    ],
+    [
+     2824,
+     32
+    ],
+    [
+     3326,
+     32
+    ],
+    [
+     3619,
+     32
+    ],
+    [
+     3910,
+     32
+    ],
+    [
+     3978,
+     32
+    ],
+    [
+     4309,
+     32
+    ],
+    [
+     4415,
+     32
+    ],
+    [
+     4749,
+     32
+    ],
+    [
+     5658,
+     32
+    ],
+    [
+     5902,
+     32
+    ],
+    [
+     6273,
+     32
+    ],
+    [
+     7133,
+     32
+    ],
+    [
+     8247,
+     32
+    ],
+    [
+     8411,
+     32
+    ],
+    [
+     8496,
+     32
+    ],
+    [
+     8836,
+     32
+    ],
+    [
+     8945,
+     32
+    ],
+    [
+     9732,
+     32
+    ],
+    [
+     9900,
+     32
+    ],
+    [
+     10311,
+     32
+    ],
+    [
+     10509,
+     32
+    ],
+    [
+     11199,
+     32
+    ],
+    [
+     11483,
+     32
+    ],
+    [
+     11670,
+     32
+    ],
+    [
+     13767,
+     32
+    ],
+    [
+     14547,
+     32
+    ],
+    [
+     15521,
+     32
+    ],
+    [
+     16189,
+     32
+    ],
+    [
+     16957,
+     32
+    ],
+    [
+     19384,
+     32
+    ],
+    [
+     20020,
+     32
+    ],
+    [
+     20185,
+     32
+    ],
+    [
+     20322,
+     32
+    ],
+    [
+     20664,
+     32
+    ],
+    [
+     20898,
+     32
+    ],
+    [
+     21126,
+     32
+    ],
+    [
+     21354,
+     32
+    ],
+    [
+     21582,
+     32
+    ],
+    [
+     21864,
+     32
+    ],
+    [
+     22829,
+     32
+    ],
+    [
+     23004,
+     32
+    ],
+    [
+     23170,
+     32
+    ]
+   ],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0xed2bf44c94391ef543ad7f93784e84c924c6bebff4bbabdbdda1c7e5c00fddf4",
+     "firstDifferingByte": null
+    },
+    "L2": {
+     "result": "identical",
+     "maskedHash": "0xed2bf44c94391ef543ad7f93784e84c924c6bebff4bbabdbdda1c7e5c00fddf4",
+     "firstDifferingByte": null
+    },
+    "L2b": {
+     "result": "identical",
+     "maskedHash": "0xed2bf44c94391ef543ad7f93784e84c924c6bebff4bbabdbdda1c7e5c00fddf4",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawActionsArchive": {
+   "status": "compiled",
+   "length": 12254,
+   "seconds": 3.3,
+   "immutableRegions": [
+    [
+     1933,
+     32
+    ],
+    [
+     3354,
+     32
+    ],
+    [
+     8197,
+     32
+    ]
+   ],
+   "linkRegions": [],
+   "perChain": {
+    "L2": {
+     "result": "identical",
+     "maskedHash": "0xfa22b60335ae0d9e4a616396608e79cda20f986d1ba6f9f7dd561f2437ecdd8d",
+     "firstDifferingByte": null
+    },
+    "L2b": {
+     "result": "identical",
+     "maskedHash": "0xfa22b60335ae0d9e4a616396608e79cda20f986d1ba6f9f7dd561f2437ecdd8d",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawActionsERC1271": {
+   "status": "compiled",
+   "length": 5341,
+   "seconds": 18.3,
+   "immutableRegions": [
+    [
+     342,
+     32
+    ],
+    [
+     410,
+     32
+    ],
+    [
+     1261,
+     32
+    ],
+    [
+     2255,
+     32
+    ],
+    [
+     2397,
+     32
+    ],
+    [
+     3358,
+     32
+    ],
+    [
+     3446,
+     32
+    ]
+   ],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0x04d568f76457ea7b2c427aa9e4978de39eb687e818270736605d6001977e609e",
+     "firstDifferingByte": null
+    },
+    "L2": {
+     "result": "identical",
+     "maskedHash": "0x04d568f76457ea7b2c427aa9e4978de39eb687e818270736605d6001977e609e",
+     "firstDifferingByte": null
+    },
+    "L2b": {
+     "result": "identical",
+     "maskedHash": "0x04d568f76457ea7b2c427aa9e4978de39eb687e818270736605d6001977e609e",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawBuyAndBurn": {
+   "status": "compiled",
+   "length": 2059,
+   "seconds": 0.3,
+   "immutableRegions": [
+    [
+     137,
+     32
+    ],
+    [
+     209,
+     32
+    ],
+    [
+     296,
+     32
+    ],
+    [
+     537,
+     32
+    ],
+    [
+     685,
+     32
+    ],
+    [
+     723,
+     32
+    ],
+    [
+     832,
+     32
+    ],
+    [
+     1757,
+     32
+    ],
+    [
+     1795,
+     32
+    ],
+    [
+     1881,
+     32
+    ]
+   ],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0x39eaab28b415f20f65d87a29802f3066f607d5c8cb755549447ca638c32e9729",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawCapOracle": {
+   "status": "compiled",
+   "length": 4849,
+   "seconds": 0.7,
+   "immutableRegions": [
+    [
+     388,
+     32
+    ],
+    [
+     893,
+     32
+    ],
+    [
+     2432,
+     32
+    ],
+    [
+     3497,
+     32
+    ],
+    [
+     4215,
+     32
+    ]
+   ],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0xe37b14c83b7057b6f4ebc1d617b88071828de56350b93d2197e03a862bb199bb",
+     "firstDifferingByte": null
+    },
+    "L2": {
+     "result": "identical",
+     "maskedHash": "0xe37b14c83b7057b6f4ebc1d617b88071828de56350b93d2197e03a862bb199bb",
+     "firstDifferingByte": null
+    },
+    "L2b": {
+     "result": "identical",
+     "maskedHash": "0xe37b14c83b7057b6f4ebc1d617b88071828de56350b93d2197e03a862bb199bb",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawChallengeRelay": {
+   "status": "compiled",
+   "length": 6896,
+   "seconds": 1.3,
+   "immutableRegions": [
+    [
+     561,
+     32
+    ],
+    [
+     1522,
+     32
+    ],
+    [
+     1915,
+     32
+    ],
+    [
+     2169,
+     32
+    ],
+    [
+     2722,
+     32
+    ],
+    [
+     2919,
+     32
+    ],
+    [
+     3427,
+     32
+    ],
+    [
+     5089,
+     32
+    ],
+    [
+     5508,
+     32
+    ],
+    [
+     6093,
+     32
+    ]
+   ],
+   "linkRegions": [],
+   "perChain": {
+    "L2": {
+     "result": "identical",
+     "maskedHash": "0xd86eed9fd4c1ee9e7a1cff148f0c052b7146ad63fdc82894ee15f2315ee74b93",
+     "firstDifferingByte": null
+    },
+    "L2b": {
+     "result": "identical",
+     "maskedHash": "0xd86eed9fd4c1ee9e7a1cff148f0c052b7146ad63fdc82894ee15f2315ee74b93",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawFontDataA": {
+   "status": "compiled",
+   "length": 18672,
+   "seconds": 2.9,
+   "immutableRegions": [],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0x6357c0fe605cd07a7bbe3d4f5c35a52626464fd75ebda84fc9a22ab53315c31e",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawFontDataB": {
+   "status": "compiled",
+   "length": 12627,
+   "seconds": 1.8,
+   "immutableRegions": [],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0x5b6c6bd08c479ec4443d7a9f53f12cfdd6bb1ce16a4133829079795933a21810",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawL1PriceReader": {
+   "status": "compiled",
+   "length": 1097,
+   "seconds": 0.2,
+   "immutableRegions": [
+    [
+     86,
+     32
+    ],
+    [
+     144,
+     32
+    ],
+    [
+     227,
+     32
+    ],
+    [
+     699,
+     32
+    ],
+    [
+     833,
+     32
+    ],
+    [
+     901,
+     32
+    ]
+   ],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0x4bb54b18ada0a938c083ea06ed3d0532158f4caeeed6348a619db8d6d0200bd9",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawNetworkManager": {
+   "status": "compiled",
+   "length": 12081,
+   "seconds": 2.7,
+   "immutableRegions": [
+    [
+     1121,
+     32
+    ],
+    [
+     2466,
+     32
+    ],
+    [
+     5145,
+     32
+    ],
+    [
+     7581,
+     32
+    ],
+    [
+     9141,
+     32
+    ]
+   ],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0x705f0c936ed0eef3abdd9358ee9f8f9aef722c081188cf195e144813568855e1",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawProfile": {
+   "status": "compiled",
+   "length": 24574,
+   "seconds": 17.2,
+   "immutableRegions": [
+    [
+     1719,
+     32
+    ],
+    [
+     1835,
+     32
+    ],
+    [
+     2265,
+     32
+    ],
+    [
+     3019,
+     32
+    ],
+    [
+     4589,
+     32
+    ],
+    [
+     4924,
+     32
+    ],
+    [
+     5646,
+     32
+    ],
+    [
+     5714,
+     32
+    ],
+    [
+     6048,
+     32
+    ],
+    [
+     7148,
+     32
+    ],
+    [
+     7399,
+     32
+    ],
+    [
+     8808,
+     32
+    ],
+    [
+     8954,
+     32
+    ],
+    [
+     9514,
+     32
+    ],
+    [
+     9917,
+     32
+    ],
+    [
+     10359,
+     32
+    ],
+    [
+     10803,
+     32
+    ],
+    [
+     12489,
+     32
+    ],
+    [
+     12734,
+     32
+    ],
+    [
+     12835,
+     32
+    ],
+    [
+     13170,
+     32
+    ],
+    [
+     14448,
+     32
+    ],
+    [
+     14750,
+     32
+    ],
+    [
+     15335,
+     32
+    ],
+    [
+     15574,
+     32
+    ],
+    [
+     16618,
+     32
+    ],
+    [
+     19097,
+     32
+    ],
+    [
+     20281,
+     32
+    ],
+    [
+     20544,
+     32
+    ],
+    [
+     21874,
+     32
+    ],
+    [
+     22211,
+     32
+    ],
+    [
+     22681,
+     32
+    ],
+    [
+     23684,
+     32
+    ]
+   ],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0xffe13543bdf73138a0acadd31af4e0453d84db750f07bb166867b9051c6e6514",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawProfileLedger": {
+   "status": "compiled",
+   "length": 20024,
+   "seconds": 18.7,
+   "immutableRegions": [
+    [
+     1981,
+     32
+    ],
+    [
+     4180,
+     32
+    ],
+    [
+     4307,
+     32
+    ],
+    [
+     4610,
+     32
+    ],
+    [
+     5974,
+     32
+    ],
+    [
+     7370,
+     32
+    ],
+    [
+     8207,
+     32
+    ],
+    [
+     9934,
+     32
+    ],
+    [
+     10298,
+     32
+    ],
+    [
+     11358,
+     32
+    ],
+    [
+     15151,
+     32
+    ],
+    [
+     17065,
+     32
+    ],
+    [
+     17928,
+     32
+    ],
+    [
+     18103,
+     32
+    ],
+    [
+     19167,
+     32
+    ]
+   ],
+   "linkRegions": [
+    [
+     11764,
+     20
+    ]
+   ],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0x746472eceb2fb5eb02770f679d7a3126eafea16468b6c03b6ae8bb883ffb60ba",
+     "firstDifferingByte": null
+    },
+    "L2": {
+     "result": "identical",
+     "maskedHash": "0x746472eceb2fb5eb02770f679d7a3126eafea16468b6c03b6ae8bb883ffb60ba",
+     "firstDifferingByte": null
+    },
+    "L2b": {
+     "result": "identical",
+     "maskedHash": "0x746472eceb2fb5eb02770f679d7a3126eafea16468b6c03b6ae8bb883ffb60ba",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawProfileLens": {
+   "status": "compiled",
+   "length": 4043,
+   "seconds": 0.5,
+   "immutableRegions": [
+    [
+     101,
+     32
+    ],
+    [
+     308,
+     32
+    ],
+    [
+     1320,
+     32
+    ],
+    [
+     2582,
+     32
+    ],
+    [
+     2675,
+     32
+    ],
+    [
+     3243,
+     32
+    ]
+   ],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0xac6ddc6ef310ada894e798ce09161a5ea27f08c3094e9ec557436ca8ed061c03",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawProfileMarketplace": {
+   "status": "compiled",
+   "length": 14369,
+   "seconds": 3.6,
+   "immutableRegions": [
+    [
+     980,
+     32
+    ],
+    [
+     1554,
+     32
+    ],
+    [
+     1609,
+     32
+    ],
+    [
+     2192,
+     32
+    ],
+    [
+     2418,
+     32
+    ],
+    [
+     2706,
+     32
+    ],
+    [
+     3528,
+     32
+    ],
+    [
+     5605,
+     32
+    ],
+    [
+     7739,
+     32
+    ],
+    [
+     7788,
+     32
+    ],
+    [
+     8390,
+     32
+    ],
+    [
+     8432,
+     32
+    ],
+    [
+     9327,
+     32
+    ]
+   ],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0x8e283a191c3d8b2b5342d5fb92b0bee87ccbb784e24cb0772cafe01d25ca2f73",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawProfileMinter": {
+   "status": "compiled",
+   "length": 14650,
+   "seconds": 4.2,
+   "immutableRegions": [
+    [
+     678,
+     32
+    ],
+    [
+     2351,
+     32
+    ],
+    [
+     3555,
+     32
+    ],
+    [
+     3639,
+     32
+    ],
+    [
+     4193,
+     32
+    ],
+    [
+     4922,
+     32
+    ],
+    [
+     8397,
+     32
+    ],
+    [
+     9163,
+     32
+    ],
+    [
+     14147,
+     32
+    ],
+    [
+     14295,
+     32
+    ]
+   ],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0x64068320dafbde0033c5a47b16a77776aa76e10e9a9b088f2478d02be2dd8a63",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawProfileQuoter": {
+   "status": "compiled",
+   "length": 13404,
+   "seconds": 5.2,
+   "immutableRegions": [
+    [
+     281,
+     32
+    ],
+    [
+     658,
+     32
+    ],
+    [
+     846,
+     32
+    ],
+    [
+     1903,
+     32
+    ],
+    [
+     2473,
+     32
+    ],
+    [
+     4497,
+     32
+    ],
+    [
+     5824,
+     32
+    ],
+    [
+     6833,
+     32
+    ],
+    [
+     7915,
+     32
+    ],
+    [
+     8792,
+     32
+    ],
+    [
+     9721,
+     32
+    ],
+    [
+     10648,
+     32
+    ],
+    [
+     11222,
+     32
+    ],
+    [
+     11838,
+     32
+    ],
+    [
+     12248,
+     32
+    ],
+    [
+     12437,
+     32
+    ],
+    [
+     12613,
+     32
+    ]
+   ],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0xcd1ae2b9548dafcd15f66603d8c897ca831a876b5cdd2244b97195ddb05994e1",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "CawProfileURI": {
+   "status": "compiled",
+   "length": 9206,
+   "seconds": 1.7,
+   "immutableRegions": [
+    [
+     3872,
+     32
+    ],
+    [
+     4665,
+     32
+    ],
+    [
+     5130,
+     32
+    ],
+    [
+     5195,
+     32
+    ]
+   ],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0x9e123098e917c7a8268766830bbc0694d6b641f588fd48c341b3091c7cd8cd00",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "MintableCaw": {
+   "status": "compiled",
+   "length": 2352,
+   "seconds": 0.8,
+   "immutableRegions": [],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "length-differs",
+     "chainLength": 2394
+    }
+   }
+  },
+  "PathwayExpander": {
+   "status": "compiled",
+   "length": 6770,
+   "seconds": 1.3,
+   "immutableRegions": [],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0x6c8c9c13ddb5ffbb2a278ac26e527b06331468c5d37da2be876f12a3b4e627f0",
+     "firstDifferingByte": null
+    },
+    "L2": {
+     "result": "identical",
+     "maskedHash": "0x6c8c9c13ddb5ffbb2a278ac26e527b06331468c5d37da2be876f12a3b4e627f0",
+     "firstDifferingByte": null
+    },
+    "L2b": {
+     "result": "identical",
+     "maskedHash": "0x6c8c9c13ddb5ffbb2a278ac26e527b06331468c5d37da2be876f12a3b4e627f0",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "SessionMessageParser": {
+   "status": "compiled",
+   "length": 4732,
+   "seconds": 1.0,
+   "immutableRegions": [],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0x8938b559c159187797ab32cebcc76aaab6755a6d2aadbf2257c0b5d62f603687",
+     "firstDifferingByte": null
+    },
+    "L2": {
+     "result": "identical",
+     "maskedHash": "0x8938b559c159187797ab32cebcc76aaab6755a6d2aadbf2257c0b5d62f603687",
+     "firstDifferingByte": null
+    },
+    "L2b": {
+     "result": "identical",
+     "maskedHash": "0x8938b559c159187797ab32cebcc76aaab6755a6d2aadbf2257c0b5d62f603687",
+     "firstDifferingByte": null
+    }
+   }
+  },
+  "SmartEOA": {
+   "status": "compiled",
+   "length": 7781,
+   "seconds": 1.4,
+   "immutableRegions": [],
+   "linkRegions": [],
+   "perChain": {
+    "L1": {
+     "result": "identical",
+     "maskedHash": "0x2eadec79866a704f77fc4f3017efbb634b0dbcc405d2f642096d8baf1b42761e",
+     "firstDifferingByte": null
+    }
+   }
+  }
+ }
+}

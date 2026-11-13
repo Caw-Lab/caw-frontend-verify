@@ -1,33 +1,40 @@
 # caw-frontend-verify
 
-Experiment: does the CAW frontend build reproducibly on GitHub Actions? Stage 1 of a possible "reference hash from CI" setup. Nothing here is published or deployed.
+Small, read-only tools to check that what a CAW node serves and points at is what a published
+reference says it should be. Not affiliated with, or endorsed by, the CAW project. A passing check
+means "consistent with the reference", not "safe".
 
-## What the workflow does
+Status: prototypes. The three checks exist (`contract-check`, `bridge`, `frontend-check`) and `verify` runs them together from a command line; a static page (`web/`) shows their results; a scheduled monitor does not exist yet.
 
-`repro.yml` (manual run, input: a full upstream commit SHA, default `97cd13f3…`):
+## Layout
 
-1. Three jobs fetch that commit from `GilgameshCaw/Caw` into separate directories on separate runners.
-2. Each installs dependencies the way the installer does (`cli/src/steps/install.js`): `npm install --legacy-peer-deps` in `client/`, then `yarn install --ignore-platform` in the frontend directory.
-3. Each runs `yarn build` with the same fixed inputs (`CAW_CLIENT_VERSION=repro`, `VITE_NETWORK_ID=1`, `VITE_PROJECT_ID=dummy-project-id`).
-4. `a1` and `a2` use Node `22.23.4` (the version on the reference server); `b1` uses `22.12.0`, the lowest 22.x the dependencies allow. Upstream `.nvmrc` says `22.0.0` at `97cd13f3`, but `yarn install` fails on it (`yargs@18.1.0` needs `^22.12.0`), found in the first run.
-5. A compare job reads the three `build-manifest.json` files and writes a table to the run summary.
+| folder | what | status |
+|---|---|---|
+| [`contract-check/`](contract-check/) | compares the contracts a deployment points at (code, links, owners, libraries) with a contract reference, through public JSON-RPC | prototype (Python, standard library only) |
+| [`frontend-check/`](frontend-check/) | compares the files a node serves with a frontend manifest (SHA-256 per file) | prototype (Python, standard library only) |
+| [`bridge/`](bridge/) | joins the two: the contract addresses compiled into a frontend's entry script are compared with an address fingerprint of a reference build (which contracts does this frontend point at?) | prototype (Python, standard library only) |
+| [`verify/`](verify/) | runs the three checks for a site against a release registry and states the facts side by side (no ranking) | prototype (Python, standard library only) |
+| [`web/`](web/) | a static page that shows results in English and Japanese; with `verify/serve_local.py` it has a box where a site address is typed | first version (HTML and JavaScript, no dependencies) |
+| [`.github/workflows/repro.yml`](.github/workflows/repro.yml), [`scripts/`](scripts/) | builds one published commit of the upstream frontend on several GitHub Actions runners and compares the build manifests; the way to get file fingerprints that the frontend file check will need | experiment (stage 1), see [`docs/reproducibility.md`](docs/reproducibility.md) |
+| [`formats/`](formats/) | specifications of the reference files, the release registry and the status file | contract reference, release registry and status file: v1; others: drafts |
+| [`references/`](references/) | reference data (addresses and hashes: facts about public chains) | testnet set for upstream commit `97cd13f3` |
 
-## How to read the result
+Each tool folder stands on its own: it has its own README and tests, and does not import from the
+others. Only `bridge/` connects them.
 
-| Result | Meaning |
-|---|---|
-| a1 = a2 | same input gives the same output on two machines |
-| a1 = a2 = b1 | the Node version (22.12.0 vs 22.23.4) does not matter here |
-| a1 ≠ a2 | the build is not stable on CI; the summary lists the files and which packages differ between the installs |
+## Why two checks
 
-The VPS comparison is a separate step (needs permission to create a throwaway worktree there).
+A frontend manifest can say "this screen points at address set A". It cannot say that A is the
+genuine deployment. The contract reference can say that A is consistent on the chains. Both together
+support "the contracts this screen points at are the ones in the reference". Neither says anything
+about a node's backend or its configuration.
 
-## Known limits (not verified)
+## Provenance
 
-- The workflow has not been run. The install commands are copied from the installer, but a failure in `npm install` (for example a postinstall step) or in `tsc -b` is possible; the first run may need fixes.
-- `npm install` may resolve differently on different days if the lockfile does not pin everything; the per-job package lists (`deps-*.txt`) are there to show that.
-- Earlier local builds used `npx vite build` (without `tsc -b`) and a shared `node_modules`; this workflow uses `yarn build` and fresh installs, so a match here is a new result, not a repeat.
+Original code, written from scratch (see each tool's README for the inputs it uses). Nothing was
+copied from the upstream Verifier, from other pull requests, or from other projects.
 
-## Safety
+## License
 
-No secrets are used and none should be added. The token is read-only. Values in the workflow are dummies.
+MIT, see [`LICENSE`](LICENSE). Copyright (c) 2026 zinsanjp and contributors. Contributions are
+accepted under the same license.

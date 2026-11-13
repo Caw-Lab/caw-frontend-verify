@@ -1,0 +1,42 @@
+{
+  "license": "MIT",
+  "copyright": "Copyright (c) 2026 zinsanjp and contributors",
+  "schemaVersion": 1,
+  "kind": "caw-releases",
+  "releases": [
+    {
+      "id": "upstream-master-97cd13f3-testnet",
+      "title": "Contract list of Gilgamesh’s master (V2), as of 2026-09-21",
+      "titleJa": "Gilgamesh の master(V2)のコントラクト一覧(2026-09-21 時点)",
+      "sourceDesc": "Gilgamesh’s master branch (GilgameshCaw/Caw, commit 97cd13f3 as of 2026-09-21)",
+      "sourceDescJa": "Gilgamesh の master ブランチ(GilgameshCaw/Caw の 2026-09-21 時点のコミット 97cd13f3)",
+      "publisher": {
+        "name": "GilgameshCaw (upstream repository)",
+        "kind": "upstream"
+      },
+      "network": "testnet",
+      "source": {
+        "repo": "GilgameshCaw/Caw",
+        "commit": "97cd13f3a1423f702d411472fdd2b2a2e7bfbd59",
+        "tagged": false
+      },
+      "lineage": {
+        "basedOn": null,
+        "note": "the upstream repository as it is at this commit (the tip of master on 2026-09-21), nothing added",
+        "noteJa": "上流のリポジトリの、このコミット時点(2026-09-21 の master の先頭)そのままで、手を加えていません"
+      },
+      "frontend": {
+        "addressFingerprint": "testnet/fingerprint_upstream-master-97cd13f3.clean-build.json",
+        "manifest": null
+      },
+      "contracts": {
+        "reference": "testnet/reference_testnet_97cd13f3.contracts.json"
+      },
+      "notes": [
+        "Made by the maintainers of this repository from public data; the upstream publisher has not issued it.",
+        "The commit is the tip of master, not a tagged release.",
+        "No file manifest: with the upstream build, each operator's settings end up in the files, so the files differ from node to node."
+      ]
+    }
+  ]
+}

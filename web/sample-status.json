@@ -1,0 +1,210 @@
+{
+ "schemaVersion": 1,
+ "kind": "caw-verify-status",
+ "generatedAt": "2026-11-13T04:04:39Z",
+ "sites": [
+  {
+   "site": "https://cawnest.com",
+   "result": {
+    "site": "https://cawnest.com",
+    "releases": [
+     {
+      "id": "upstream-master-97cd13f3-testnet",
+      "publisher": {
+       "name": "GilgameshCaw (upstream repository)",
+       "kind": "upstream"
+      },
+      "network": "testnet",
+      "source": {
+       "repo": "GilgameshCaw/Caw",
+       "commit": "97cd13f3a1423f702d411472fdd2b2a2e7bfbd59",
+       "tagged": false
+      },
+      "lineage": {
+       "basedOn": null,
+       "note": "the upstream repository as it is at this commit (the tip of master on 2026-09-21), nothing added"
+      },
+      "facts": {
+       "frontendFiles": {
+        "verdict": "NOT_AVAILABLE",
+        "reason": "this release publishes no file manifest"
+       },
+       "contractsNamed": {
+        "tool": "bridge",
+        "verdict": "MATCH",
+        "site": "https://cawnest.com",
+        "fingerprint": "upstream-master-97cd13f3-clean-build",
+        "required": 15,
+        "present": 15,
+        "entry": "assets/index-DdSL_-Yv.js",
+        "missing": [],
+        "unexpected": [],
+        "recognized": [
+         "L1.CawNetworkManager",
+         "L1.CawProfile",
+         "L1.CawProfileLens",
+         "L1.CawProfileMarketplace",
+         "L1.CawProfileMinter",
+         "L1.CawProfileQuoter",
+         "L1.MintableCaw",
+         "L1.SmartEOA",
+         "L2.CawActions",
+         "L2.CawProfileLedger"
+        ],
+        "externalScripts": 0
+       },
+       "contractsOnChain": {
+        "tool": "contract-check",
+        "verdict": "PASS",
+        "summary": {
+         "OK": 173
+        },
+        "codeEvidence": {
+         "recompile-identical": 34,
+         "recompile-except-metadata": 1,
+         "sourcify-exact-match": 3,
+         "sourcify-match": 3
+        },
+        "flagged": []
+       }
+      },
+      "matched": true,
+      "incomplete": false
+     }
+    ]
+   }
+  },
+  {
+   "site": "https://caw-testnode.com",
+   "result": {
+    "site": "https://caw-testnode.com",
+    "releases": [
+     {
+      "id": "upstream-master-97cd13f3-testnet",
+      "publisher": {
+       "name": "GilgameshCaw (upstream repository)",
+       "kind": "upstream"
+      },
+      "network": "testnet",
+      "source": {
+       "repo": "GilgameshCaw/Caw",
+       "commit": "97cd13f3a1423f702d411472fdd2b2a2e7bfbd59",
+       "tagged": false
+      },
+      "lineage": {
+       "basedOn": null,
+       "note": "the upstream repository as it is at this commit (the tip of master on 2026-09-21), nothing added"
+      },
+      "facts": {
+       "frontendFiles": {
+        "verdict": "NOT_AVAILABLE",
+        "reason": "this release publishes no file manifest"
+       },
+       "contractsNamed": {
+        "tool": "bridge",
+        "verdict": "DIFFERENT",
+        "site": "https://caw-testnode.com",
+        "fingerprint": "upstream-master-97cd13f3-clean-build",
+        "required": 15,
+        "present": 5,
+        "entry": "assets/index-WDG3k3FY.js",
+        "missing": [
+         {
+          "address": "0x35c27e4bcc13101acdf6418deded99ccd3838075",
+          "label": "L1.CawNetworkManager"
+         },
+         {
+          "address": "0x3ba577936ff6cfe07dc2d00e6669436c6dace319",
+          "label": "L1.CawProfile"
+         },
+         {
+          "address": "0x5613353c6b6f55fbc82487d36a5316a2cade7ee0",
+          "label": "L1.CawProfileMinter"
+         },
+         {
+          "address": "0x6289fa33b3542ccc6730599f6f3d87f565ce5d35",
+          "label": null
+         },
+         {
+          "address": "0x66da3a1fd97c175f74e5f3aabbe630b08f2c6c8a",
+          "label": "L1.CawProfileQuoter"
+         },
+         {
+          "address": "0x73246104f57001edc6d0659fa37afb672a76e763",
+          "label": "L2.CawActions"
+         },
+         {
+          "address": "0x858f60fc71bafbdc6ba170acc7dc8974f6270cbd",
+          "label": "L1.CawProfileMarketplace"
+         },
+         {
+          "address": "0x918082ab668d7661bce65c3caaf047648f7d4271",
+          "label": "L1.SmartEOA"
+         },
+         {
+          "address": "0x93593a023629eb84b389770d76a81c5f982f02a9",
+          "label": "L2.CawProfileLedger"
+         },
+         {
+          "address": "0xfffef4bd46c222aa566cf1f17e7f47c1edde225b",
+          "label": "L1.CawProfileLens"
+         }
+        ],
+        "unexpected": [
+         {
+          "address": "0x0c3e245f3939b4d9f30e088988dd9d7c8f86b11d",
+          "label": null
+         },
+         {
+          "address": "0x3100b1e890b7a4f3da0b6be0388a9b2aff9c8e79",
+          "label": null
+         },
+         {
+          "address": "0x5674e4658b988ed9337dd0caa493c6aa908006af",
+          "label": null
+         },
+         {
+          "address": "0x6404d1d3d878407a0977d99c832453f235da67c3",
+          "label": null
+         },
+         {
+          "address": "0x8d65d141a60b1e1136be62604783aade8e7290d9",
+          "label": null
+         },
+         {
+          "address": "0x9fcbb3d6880cd3293f1a731fe6c958a6621a74bf",
+          "label": null
+         },
+         {
+          "address": "0xa5c515d35c291110090b6edc4278acdef1424c7a",
+          "label": null
+         }
+        ],
+        "recognized": [
+         "L1.MintableCaw"
+        ],
+        "externalScripts": 0
+       },
+       "contractsOnChain": {
+        "tool": "contract-check",
+        "verdict": "PASS",
+        "summary": {
+         "OK": 173
+        },
+        "codeEvidence": {
+         "recompile-identical": 34,
+         "recompile-except-metadata": 1,
+         "sourcify-exact-match": 3,
+         "sourcify-match": 3
+        },
+        "flagged": []
+       }
+      },
+      "matched": false,
+      "incomplete": false
+     }
+    ]
+   }
+  }
+ ]
+}

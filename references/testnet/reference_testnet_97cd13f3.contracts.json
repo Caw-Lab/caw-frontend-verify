@@ -1,0 +1,3057 @@
+{
+ "license": "MIT",
+ "copyright": "Copyright (c) 2026 zinsanjp and contributors",
+ "schemaVersion": 1,
+ "kind": "caw-contract-reference",
+ "network": "testnet",
+ "release": "upstream GilgameshCaw/Caw master 97cd13f3 (2026-09-21)",
+ "createdAt": "2026-11-13",
+ "notes": [
+  "basis 'published': listed in the repo's deployments.ts / addresses.ts at the release above.",
+  "basis 'observed': read from the chain on createdAt; pins that day's state (detects later change), not independent proof.",
+  "basis 'external': a third-party contract (LayerZero endpoint, SP1 verifier, swap router, WETH) pinned the same way."
+ ],
+ "chains": {
+  "L1": {
+   "chainId": 11155111,
+   "eid": 40161
+  },
+  "L2": {
+   "chainId": 84532,
+   "eid": 40245
+  },
+  "L2b": {
+   "chainId": 421614,
+   "eid": 40231
+  }
+ },
+ "contracts": {
+  "L1": {
+   "CawActions": {
+    "address": "0xe33339b3d826e7fc61557d7e82a4348710790136",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0xed2bf44c94391ef543ad7f93784e84c924c6bebff4bbabdbdda1c7e5c00fddf4",
+     "mask": [
+      [
+       523,
+       32
+      ],
+      [
+       1057,
+       32
+      ],
+      [
+       1125,
+       32
+      ],
+      [
+       1947,
+       32
+      ],
+      [
+       2824,
+       32
+      ],
+      [
+       3326,
+       32
+      ],
+      [
+       3619,
+       32
+      ],
+      [
+       3910,
+       32
+      ],
+      [
+       3978,
+       32
+      ],
+      [
+       4309,
+       32
+      ],
+      [
+       4415,
+       32
+      ],
+      [
+       4749,
+       32
+      ],
+      [
+       5658,
+       32
+      ],
+      [
+       5902,
+       32
+      ],
+      [
+       6273,
+       32
+      ],
+      [
+       7133,
+       32
+      ],
+      [
+       8247,
+       32
+      ],
+      [
+       8411,
+       32
+      ],
+      [
+       8496,
+       32
+      ],
+      [
+       8836,
+       32
+      ],
+      [
+       8945,
+       32
+      ],
+      [
+       9732,
+       32
+      ],
+      [
+       9900,
+       32
+      ],
+      [
+       10311,
+       32
+      ],
+      [
+       10509,
+       32
+      ],
+      [
+       11199,
+       32
+      ],
+      [
+       11483,
+       32
+      ],
+      [
+       11670,
+       32
+      ],
+      [
+       13767,
+       32
+      ],
+      [
+       14547,
+       32
+      ],
+      [
+       15521,
+       32
+      ],
+      [
+       16189,
+       32
+      ],
+      [
+       16957,
+       32
+      ],
+      [
+       19384,
+       32
+      ],
+      [
+       20020,
+       32
+      ],
+      [
+       20185,
+       32
+      ],
+      [
+       20322,
+       32
+      ],
+      [
+       20664,
+       32
+      ],
+      [
+       20898,
+       32
+      ],
+      [
+       21126,
+       32
+      ],
+      [
+       21354,
+       32
+      ],
+      [
+       21582,
+       32
+      ],
+      [
+       21864,
+       32
+      ],
+      [
+       22829,
+       32
+      ],
+      [
+       23004,
+       32
+      ],
+      [
+       23170,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawActionsERC1271": {
+    "address": "0x2418592eb4bd5212b3c64408769f95f73dcb45c6",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x04d568f76457ea7b2c427aa9e4978de39eb687e818270736605d6001977e609e",
+     "mask": [
+      [
+       342,
+       32
+      ],
+      [
+       410,
+       32
+      ],
+      [
+       1261,
+       32
+      ],
+      [
+       2255,
+       32
+      ],
+      [
+       2397,
+       32
+      ],
+      [
+       3358,
+       32
+      ],
+      [
+       3446,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawBuyAndBurn": {
+    "address": "0x008e096877dbf12fa5c0f07489855ade3874b4e7",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x39eaab28b415f20f65d87a29802f3066f607d5c8cb755549447ca638c32e9729",
+     "mask": [
+      [
+       137,
+       32
+      ],
+      [
+       209,
+       32
+      ],
+      [
+       296,
+       32
+      ],
+      [
+       537,
+       32
+      ],
+      [
+       685,
+       32
+      ],
+      [
+       723,
+       32
+      ],
+      [
+       832,
+       32
+      ],
+      [
+       1757,
+       32
+      ],
+      [
+       1795,
+       32
+      ],
+      [
+       1881,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawFontDataA": {
+    "address": "0x43840b562b412b59741b20bab7faa06569ff98fd",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x6357c0fe605cd07a7bbe3d4f5c35a52626464fd75ebda84fc9a22ab53315c31e",
+     "mask": [],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawFontDataB": {
+    "address": "0x6df9f0a1a98006ebec92a4e789662e6343445e19",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x5b6c6bd08c479ec4443d7a9f53f12cfdd6bb1ce16a4133829079795933a21810",
+     "mask": [],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawNetworkManager": {
+    "address": "0x35c27e4bcc13101acdf6418deded99ccd3838075",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x705f0c936ed0eef3abdd9358ee9f8f9aef722c081188cf195e144813568855e1",
+     "mask": [
+      [
+       1121,
+       32
+      ],
+      [
+       2466,
+       32
+      ],
+      [
+       5145,
+       32
+      ],
+      [
+       7581,
+       32
+      ],
+      [
+       9141,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawProfile": {
+    "address": "0x3ba577936ff6cfe07dc2d00e6669436c6dace319",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0xffe13543bdf73138a0acadd31af4e0453d84db750f07bb166867b9051c6e6514",
+     "mask": [
+      [
+       1719,
+       32
+      ],
+      [
+       1835,
+       32
+      ],
+      [
+       2265,
+       32
+      ],
+      [
+       3019,
+       32
+      ],
+      [
+       4589,
+       32
+      ],
+      [
+       4924,
+       32
+      ],
+      [
+       5646,
+       32
+      ],
+      [
+       5714,
+       32
+      ],
+      [
+       6048,
+       32
+      ],
+      [
+       7148,
+       32
+      ],
+      [
+       7399,
+       32
+      ],
+      [
+       8808,
+       32
+      ],
+      [
+       8954,
+       32
+      ],
+      [
+       9514,
+       32
+      ],
+      [
+       9917,
+       32
+      ],
+      [
+       10359,
+       32
+      ],
+      [
+       10803,
+       32
+      ],
+      [
+       12489,
+       32
+      ],
+      [
+       12734,
+       32
+      ],
+      [
+       12835,
+       32
+      ],
+      [
+       13170,
+       32
+      ],
+      [
+       14448,
+       32
+      ],
+      [
+       14750,
+       32
+      ],
+      [
+       15335,
+       32
+      ],
+      [
+       15574,
+       32
+      ],
+      [
+       16618,
+       32
+      ],
+      [
+       19097,
+       32
+      ],
+      [
+       20281,
+       32
+      ],
+      [
+       20544,
+       32
+      ],
+      [
+       21874,
+       32
+      ],
+      [
+       22211,
+       32
+      ],
+      [
+       22681,
+       32
+      ],
+      [
+       23684,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawProfileLedger": {
+    "address": "0x617ef7b3ced96d277693c530da3ea410de92df72",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x746472eceb2fb5eb02770f679d7a3126eafea16468b6c03b6ae8bb883ffb60ba",
+     "mask": [
+      [
+       1981,
+       32
+      ],
+      [
+       4180,
+       32
+      ],
+      [
+       4307,
+       32
+      ],
+      [
+       4610,
+       32
+      ],
+      [
+       5974,
+       32
+      ],
+      [
+       7370,
+       32
+      ],
+      [
+       8207,
+       32
+      ],
+      [
+       9934,
+       32
+      ],
+      [
+       10298,
+       32
+      ],
+      [
+       11358,
+       32
+      ],
+      [
+       15151,
+       32
+      ],
+      [
+       17065,
+       32
+      ],
+      [
+       17928,
+       32
+      ],
+      [
+       18103,
+       32
+      ],
+      [
+       19167,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical",
+     "links": [
+      {
+       "start": 11764,
+       "length": 20,
+       "target": {
+        "chain": "L1",
+        "contract": "SessionMessageParser"
+       }
+      }
+     ]
+    }
+   },
+   "CawProfileLens": {
+    "address": "0xfffef4bd46c222aa566cf1f17e7f47c1edde225b",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0xac6ddc6ef310ada894e798ce09161a5ea27f08c3094e9ec557436ca8ed061c03",
+     "mask": [
+      [
+       101,
+       32
+      ],
+      [
+       308,
+       32
+      ],
+      [
+       1320,
+       32
+      ],
+      [
+       2582,
+       32
+      ],
+      [
+       2675,
+       32
+      ],
+      [
+       3243,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawProfileMarketplace": {
+    "address": "0x858f60fc71bafbdc6ba170acc7dc8974f6270cbd",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x8e283a191c3d8b2b5342d5fb92b0bee87ccbb784e24cb0772cafe01d25ca2f73",
+     "mask": [
+      [
+       980,
+       32
+      ],
+      [
+       1554,
+       32
+      ],
+      [
+       1609,
+       32
+      ],
+      [
+       2192,
+       32
+      ],
+      [
+       2418,
+       32
+      ],
+      [
+       2706,
+       32
+      ],
+      [
+       3528,
+       32
+      ],
+      [
+       5605,
+       32
+      ],
+      [
+       7739,
+       32
+      ],
+      [
+       7788,
+       32
+      ],
+      [
+       8390,
+       32
+      ],
+      [
+       8432,
+       32
+      ],
+      [
+       9327,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawProfileMinter": {
+    "address": "0x5613353c6b6f55fbc82487d36a5316a2cade7ee0",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x64068320dafbde0033c5a47b16a77776aa76e10e9a9b088f2478d02be2dd8a63",
+     "mask": [
+      [
+       678,
+       32
+      ],
+      [
+       2351,
+       32
+      ],
+      [
+       3555,
+       32
+      ],
+      [
+       3639,
+       32
+      ],
+      [
+       4193,
+       32
+      ],
+      [
+       4922,
+       32
+      ],
+      [
+       8397,
+       32
+      ],
+      [
+       9163,
+       32
+      ],
+      [
+       14147,
+       32
+      ],
+      [
+       14295,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawProfileQuoter": {
+    "address": "0x66da3a1fd97c175f74e5f3aabbe630b08f2c6c8a",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0xcd1ae2b9548dafcd15f66603d8c897ca831a876b5cdd2244b97195ddb05994e1",
+     "mask": [
+      [
+       281,
+       32
+      ],
+      [
+       658,
+       32
+      ],
+      [
+       846,
+       32
+      ],
+      [
+       1903,
+       32
+      ],
+      [
+       2473,
+       32
+      ],
+      [
+       4497,
+       32
+      ],
+      [
+       5824,
+       32
+      ],
+      [
+       6833,
+       32
+      ],
+      [
+       7915,
+       32
+      ],
+      [
+       8792,
+       32
+      ],
+      [
+       9721,
+       32
+      ],
+      [
+       10648,
+       32
+      ],
+      [
+       11222,
+       32
+      ],
+      [
+       11838,
+       32
+      ],
+      [
+       12248,
+       32
+      ],
+      [
+       12437,
+       32
+      ],
+      [
+       12613,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawProfileURI": {
+    "address": "0xd91af2c28faf3561274d12f5cd62e7e65ae9ae7b",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x9e123098e917c7a8268766830bbc0694d6b641f588fd48c341b3091c7cd8cd00",
+     "mask": [
+      [
+       3872,
+       32
+      ],
+      [
+       4665,
+       32
+      ],
+      [
+       5130,
+       32
+      ],
+      [
+       5195,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "MintableCaw": {
+    "address": "0x56817dc696448135203c0556f702c6a953260411",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x1ae56fd1171deeded8d26491d2cfe1bf2d7db46f5ac3a0845bf604c8bad241d1",
+     "mask": [],
+     "evidence": "recompile-except-metadata"
+    }
+   },
+   "SmartEOA": {
+    "address": "0x918082ab668d7661bce65c3caaf047648f7d4271",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x2eadec79866a704f77fc4f3017efbb634b0dbcc405d2f642096d8baf1b42761e",
+     "mask": [],
+     "evidence": "recompile-identical"
+    }
+   },
+   "PathwayExpander": {
+    "address": "0xdc358f569f778d567c4d150290d5f1ac4c18ab2b",
+    "basis": "observed",
+    "code": {
+     "maskedHash": "0x6c8c9c13ddb5ffbb2a278ac26e527b06331468c5d37da2be876f12a3b4e627f0",
+     "mask": [],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawL1PriceReader": {
+    "address": "0x3ab6d4f45597de28981f28539c5a2f0bb8290e98",
+    "basis": "observed",
+    "code": {
+     "maskedHash": "0x4bb54b18ada0a938c083ea06ed3d0532158f4caeeed6348a619db8d6d0200bd9",
+     "mask": [
+      [
+       86,
+       32
+      ],
+      [
+       144,
+       32
+      ],
+      [
+       227,
+       32
+      ],
+      [
+       699,
+       32
+      ],
+      [
+       833,
+       32
+      ],
+      [
+       901,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "SwapRouter": {
+    "address": "0xee567fe1712faf6149d80da1e6934e354124cfe3",
+    "basis": "external",
+    "code": {
+     "maskedHash": "0x5d33b7668234a4c8324e3ecc6453f65e8c5cf6d0dbcbff973df1d9b572eb995f",
+     "mask": [
+      [
+       351,
+       32
+      ],
+      [
+       3300,
+       32
+      ],
+      [
+       3359,
+       32
+      ],
+      [
+       3606,
+       32
+      ],
+      [
+       3748,
+       32
+      ],
+      [
+       3963,
+       32
+      ],
+      [
+       4148,
+       32
+      ],
+      [
+       4346,
+       32
+      ],
+      [
+       4403,
+       32
+      ],
+      [
+       4718,
+       32
+      ],
+      [
+       5054,
+       32
+      ],
+      [
+       5196,
+       32
+      ],
+      [
+       5378,
+       32
+      ],
+      [
+       5412,
+       32
+      ],
+      [
+       5746,
+       32
+      ],
+      [
+       6379,
+       32
+      ],
+      [
+       6629,
+       32
+      ],
+      [
+       6811,
+       32
+      ],
+      [
+       7017,
+       32
+      ],
+      [
+       7164,
+       32
+      ],
+      [
+       7343,
+       32
+      ],
+      [
+       7479,
+       32
+      ],
+      [
+       7529,
+       32
+      ],
+      [
+       7884,
+       32
+      ],
+      [
+       8060,
+       32
+      ],
+      [
+       8183,
+       32
+      ],
+      [
+       8358,
+       32
+      ],
+      [
+       8562,
+       32
+      ],
+      [
+       8711,
+       32
+      ],
+      [
+       8827,
+       32
+      ],
+      [
+       8877,
+       32
+      ],
+      [
+       9478,
+       32
+      ],
+      [
+       9982,
+       32
+      ],
+      [
+       10023,
+       32
+      ],
+      [
+       10071,
+       32
+      ],
+      [
+       10105,
+       32
+      ],
+      [
+       10436,
+       32
+      ],
+      [
+       10732,
+       32
+      ],
+      [
+       10784,
+       32
+      ],
+      [
+       10818,
+       32
+      ],
+      [
+       10870,
+       32
+      ],
+      [
+       10986,
+       32
+      ],
+      [
+       11402,
+       32
+      ],
+      [
+       11549,
+       32
+      ],
+      [
+       11725,
+       32
+      ],
+      [
+       11861,
+       32
+      ],
+      [
+       11911,
+       32
+      ],
+      [
+       14104,
+       32
+      ],
+      [
+       14171,
+       32
+      ],
+      [
+       14910,
+       32
+      ],
+      [
+       15293,
+       32
+      ],
+      [
+       16365,
+       32
+      ],
+      [
+       16539,
+       32
+      ],
+      [
+       16667,
+       32
+      ]
+     ],
+     "evidence": "sourcify-exact-match"
+    }
+   },
+   "WETH": {
+    "address": "0xfff9976782d46cc05630d1f6ebab18b2324d6b14",
+    "basis": "external",
+    "code": {
+     "maskedHash": "0xc864e10689f2da18833652a3b075d43106e87f0f90d95ee64f6f0b33bc026083",
+     "mask": [],
+     "evidence": "sourcify-exact-match"
+    }
+   },
+   "LayerZeroEndpoint": {
+    "address": "0x6edce65403992e310a62460808c4b910d972f10f",
+    "basis": "external",
+    "code": {
+     "maskedHash": "0xc91ea5dcef8775f54c8ad63c5fa2d30e9dbe607712c3b50a0b7414cac104a995",
+     "mask": [
+      [
+       1375,
+       32
+      ],
+      [
+       1969,
+       32
+      ],
+      [
+       11815,
+       32
+      ],
+      [
+       14412,
+       32
+      ],
+      [
+       14515,
+       32
+      ],
+      [
+       16520,
+       32
+      ],
+      [
+       16623,
+       32
+      ]
+     ],
+     "evidence": "sourcify-match"
+    }
+   },
+   "CawCapOracle": {
+    "address": "0xbf8ac3af521b7e182ff5e34b1366a3f16dbd29c5",
+    "basis": "observed",
+    "code": {
+     "maskedHash": "0xe37b14c83b7057b6f4ebc1d617b88071828de56350b93d2197e03a862bb199bb",
+     "mask": [
+      [
+       388,
+       32
+      ],
+      [
+       893,
+       32
+      ],
+      [
+       2432,
+       32
+      ],
+      [
+       3497,
+       32
+      ],
+      [
+       4215,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "SessionMessageParser": {
+    "address": "0x2125f8ecc50159c62bc7261d980e18f45ef021a7",
+    "basis": "observed",
+    "code": {
+     "maskedHash": "0x8938b559c159187797ab32cebcc76aaab6755a6d2aadbf2257c0b5d62f603687",
+     "mask": [],
+     "evidence": "recompile-identical"
+    }
+   }
+  },
+  "L2": {
+   "CawActions": {
+    "address": "0x73246104f57001edc6d0659fa37afb672a76e763",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0xed2bf44c94391ef543ad7f93784e84c924c6bebff4bbabdbdda1c7e5c00fddf4",
+     "mask": [
+      [
+       523,
+       32
+      ],
+      [
+       1057,
+       32
+      ],
+      [
+       1125,
+       32
+      ],
+      [
+       1947,
+       32
+      ],
+      [
+       2824,
+       32
+      ],
+      [
+       3326,
+       32
+      ],
+      [
+       3619,
+       32
+      ],
+      [
+       3910,
+       32
+      ],
+      [
+       3978,
+       32
+      ],
+      [
+       4309,
+       32
+      ],
+      [
+       4415,
+       32
+      ],
+      [
+       4749,
+       32
+      ],
+      [
+       5658,
+       32
+      ],
+      [
+       5902,
+       32
+      ],
+      [
+       6273,
+       32
+      ],
+      [
+       7133,
+       32
+      ],
+      [
+       8247,
+       32
+      ],
+      [
+       8411,
+       32
+      ],
+      [
+       8496,
+       32
+      ],
+      [
+       8836,
+       32
+      ],
+      [
+       8945,
+       32
+      ],
+      [
+       9732,
+       32
+      ],
+      [
+       9900,
+       32
+      ],
+      [
+       10311,
+       32
+      ],
+      [
+       10509,
+       32
+      ],
+      [
+       11199,
+       32
+      ],
+      [
+       11483,
+       32
+      ],
+      [
+       11670,
+       32
+      ],
+      [
+       13767,
+       32
+      ],
+      [
+       14547,
+       32
+      ],
+      [
+       15521,
+       32
+      ],
+      [
+       16189,
+       32
+      ],
+      [
+       16957,
+       32
+      ],
+      [
+       19384,
+       32
+      ],
+      [
+       20020,
+       32
+      ],
+      [
+       20185,
+       32
+      ],
+      [
+       20322,
+       32
+      ],
+      [
+       20664,
+       32
+      ],
+      [
+       20898,
+       32
+      ],
+      [
+       21126,
+       32
+      ],
+      [
+       21354,
+       32
+      ],
+      [
+       21582,
+       32
+      ],
+      [
+       21864,
+       32
+      ],
+      [
+       22829,
+       32
+      ],
+      [
+       23004,
+       32
+      ],
+      [
+       23170,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawActionsArchive": {
+    "address": "0x2423d40bb16fcfe71821e24ae507746dc7449f74",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0xfa22b60335ae0d9e4a616396608e79cda20f986d1ba6f9f7dd561f2437ecdd8d",
+     "mask": [
+      [
+       1933,
+       32
+      ],
+      [
+       3354,
+       32
+      ],
+      [
+       8197,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawActionsERC1271": {
+    "address": "0x78ab5d7be8ba2bc722f58b862c16ee77fecbcf74",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x04d568f76457ea7b2c427aa9e4978de39eb687e818270736605d6001977e609e",
+     "mask": [
+      [
+       342,
+       32
+      ],
+      [
+       410,
+       32
+      ],
+      [
+       1261,
+       32
+      ],
+      [
+       2255,
+       32
+      ],
+      [
+       2397,
+       32
+      ],
+      [
+       3358,
+       32
+      ],
+      [
+       3446,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawChallengeRelay": {
+    "address": "0xeb8ee1eb63976631bdad061afb04d0e4329e11e7",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0xd86eed9fd4c1ee9e7a1cff148f0c052b7146ad63fdc82894ee15f2315ee74b93",
+     "mask": [
+      [
+       561,
+       32
+      ],
+      [
+       1522,
+       32
+      ],
+      [
+       1915,
+       32
+      ],
+      [
+       2169,
+       32
+      ],
+      [
+       2722,
+       32
+      ],
+      [
+       2919,
+       32
+      ],
+      [
+       3427,
+       32
+      ],
+      [
+       5089,
+       32
+      ],
+      [
+       5508,
+       32
+      ],
+      [
+       6093,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawProfileLedger": {
+    "address": "0x93593a023629eb84b389770d76a81c5f982f02a9",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x746472eceb2fb5eb02770f679d7a3126eafea16468b6c03b6ae8bb883ffb60ba",
+     "mask": [
+      [
+       1981,
+       32
+      ],
+      [
+       4180,
+       32
+      ],
+      [
+       4307,
+       32
+      ],
+      [
+       4610,
+       32
+      ],
+      [
+       5974,
+       32
+      ],
+      [
+       7370,
+       32
+      ],
+      [
+       8207,
+       32
+      ],
+      [
+       9934,
+       32
+      ],
+      [
+       10298,
+       32
+      ],
+      [
+       11358,
+       32
+      ],
+      [
+       15151,
+       32
+      ],
+      [
+       17065,
+       32
+      ],
+      [
+       17928,
+       32
+      ],
+      [
+       18103,
+       32
+      ],
+      [
+       19167,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical",
+     "links": [
+      {
+       "start": 11764,
+       "length": 20,
+       "target": {
+        "chain": "L2",
+        "contract": "SessionMessageParser"
+       }
+      }
+     ]
+    }
+   },
+   "LayerZeroEndpoint": {
+    "address": "0x6edce65403992e310a62460808c4b910d972f10f",
+    "basis": "external",
+    "code": {
+     "maskedHash": "0x168278010fc91e36b5e71ac6b86b4bb7cb24548d8236e64b2639698be7a94907",
+     "mask": [
+      [
+       1375,
+       32
+      ],
+      [
+       1969,
+       32
+      ],
+      [
+       11815,
+       32
+      ],
+      [
+       14412,
+       32
+      ],
+      [
+       14515,
+       32
+      ],
+      [
+       16520,
+       32
+      ],
+      [
+       16623,
+       32
+      ]
+     ],
+     "evidence": "sourcify-match"
+    }
+   },
+   "CawCapOracle": {
+    "address": "0x6dcdae58c927015864a3f2c1a195a60df6d3c54e",
+    "basis": "observed",
+    "code": {
+     "maskedHash": "0xe37b14c83b7057b6f4ebc1d617b88071828de56350b93d2197e03a862bb199bb",
+     "mask": [
+      [
+       388,
+       32
+      ],
+      [
+       893,
+       32
+      ],
+      [
+       2432,
+       32
+      ],
+      [
+       3497,
+       32
+      ],
+      [
+       4215,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "PathwayExpander": {
+    "address": "0xeaaad32cf127c0b55d28add084c00ef5df248ae0",
+    "basis": "observed",
+    "code": {
+     "maskedHash": "0x6c8c9c13ddb5ffbb2a278ac26e527b06331468c5d37da2be876f12a3b4e627f0",
+     "mask": [],
+     "evidence": "recompile-identical"
+    }
+   },
+   "SP1Verifier": {
+    "address": "0x397a5f7f3dbd538f23de225b51f532c34448da9b",
+    "basis": "external",
+    "code": {
+     "maskedHash": "0x11612dc6695484a4dfcac5ae1a7bcb093f891eb93d8aa9ddeca7f24a1f3b7d57",
+     "mask": [],
+     "evidence": "sourcify-exact-match"
+    }
+   },
+   "SessionMessageParser": {
+    "address": "0xcca6aa7570b1626f20d1d90818e7abce4b39dfd5",
+    "basis": "observed",
+    "code": {
+     "maskedHash": "0x8938b559c159187797ab32cebcc76aaab6755a6d2aadbf2257c0b5d62f603687",
+     "mask": [],
+     "evidence": "recompile-identical"
+    }
+   }
+  },
+  "L2b": {
+   "CawActions": {
+    "address": "0x5d35790ee0e3f1641aea635c11882c4a9fca23a0",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0xed2bf44c94391ef543ad7f93784e84c924c6bebff4bbabdbdda1c7e5c00fddf4",
+     "mask": [
+      [
+       523,
+       32
+      ],
+      [
+       1057,
+       32
+      ],
+      [
+       1125,
+       32
+      ],
+      [
+       1947,
+       32
+      ],
+      [
+       2824,
+       32
+      ],
+      [
+       3326,
+       32
+      ],
+      [
+       3619,
+       32
+      ],
+      [
+       3910,
+       32
+      ],
+      [
+       3978,
+       32
+      ],
+      [
+       4309,
+       32
+      ],
+      [
+       4415,
+       32
+      ],
+      [
+       4749,
+       32
+      ],
+      [
+       5658,
+       32
+      ],
+      [
+       5902,
+       32
+      ],
+      [
+       6273,
+       32
+      ],
+      [
+       7133,
+       32
+      ],
+      [
+       8247,
+       32
+      ],
+      [
+       8411,
+       32
+      ],
+      [
+       8496,
+       32
+      ],
+      [
+       8836,
+       32
+      ],
+      [
+       8945,
+       32
+      ],
+      [
+       9732,
+       32
+      ],
+      [
+       9900,
+       32
+      ],
+      [
+       10311,
+       32
+      ],
+      [
+       10509,
+       32
+      ],
+      [
+       11199,
+       32
+      ],
+      [
+       11483,
+       32
+      ],
+      [
+       11670,
+       32
+      ],
+      [
+       13767,
+       32
+      ],
+      [
+       14547,
+       32
+      ],
+      [
+       15521,
+       32
+      ],
+      [
+       16189,
+       32
+      ],
+      [
+       16957,
+       32
+      ],
+      [
+       19384,
+       32
+      ],
+      [
+       20020,
+       32
+      ],
+      [
+       20185,
+       32
+      ],
+      [
+       20322,
+       32
+      ],
+      [
+       20664,
+       32
+      ],
+      [
+       20898,
+       32
+      ],
+      [
+       21126,
+       32
+      ],
+      [
+       21354,
+       32
+      ],
+      [
+       21582,
+       32
+      ],
+      [
+       21864,
+       32
+      ],
+      [
+       22829,
+       32
+      ],
+      [
+       23004,
+       32
+      ],
+      [
+       23170,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawActionsArchive": {
+    "address": "0x3b526a24a740f8fd5ed9688e109414ec10786b8d",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0xfa22b60335ae0d9e4a616396608e79cda20f986d1ba6f9f7dd561f2437ecdd8d",
+     "mask": [
+      [
+       1933,
+       32
+      ],
+      [
+       3354,
+       32
+      ],
+      [
+       8197,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawActionsERC1271": {
+    "address": "0x5f41cb93b2a95ac6a77a4d73043deb244ea3802f",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x04d568f76457ea7b2c427aa9e4978de39eb687e818270736605d6001977e609e",
+     "mask": [
+      [
+       342,
+       32
+      ],
+      [
+       410,
+       32
+      ],
+      [
+       1261,
+       32
+      ],
+      [
+       2255,
+       32
+      ],
+      [
+       2397,
+       32
+      ],
+      [
+       3358,
+       32
+      ],
+      [
+       3446,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawChallengeRelay": {
+    "address": "0x10723c6e9fd79683143564df246bf17870eff20d",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0xd86eed9fd4c1ee9e7a1cff148f0c052b7146ad63fdc82894ee15f2315ee74b93",
+     "mask": [
+      [
+       561,
+       32
+      ],
+      [
+       1522,
+       32
+      ],
+      [
+       1915,
+       32
+      ],
+      [
+       2169,
+       32
+      ],
+      [
+       2722,
+       32
+      ],
+      [
+       2919,
+       32
+      ],
+      [
+       3427,
+       32
+      ],
+      [
+       5089,
+       32
+      ],
+      [
+       5508,
+       32
+      ],
+      [
+       6093,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "CawProfileLedger": {
+    "address": "0x2b7f85b2f28d9d691947498fa8ae8ef8f4317197",
+    "basis": "published",
+    "code": {
+     "maskedHash": "0x746472eceb2fb5eb02770f679d7a3126eafea16468b6c03b6ae8bb883ffb60ba",
+     "mask": [
+      [
+       1981,
+       32
+      ],
+      [
+       4180,
+       32
+      ],
+      [
+       4307,
+       32
+      ],
+      [
+       4610,
+       32
+      ],
+      [
+       5974,
+       32
+      ],
+      [
+       7370,
+       32
+      ],
+      [
+       8207,
+       32
+      ],
+      [
+       9934,
+       32
+      ],
+      [
+       10298,
+       32
+      ],
+      [
+       11358,
+       32
+      ],
+      [
+       15151,
+       32
+      ],
+      [
+       17065,
+       32
+      ],
+      [
+       17928,
+       32
+      ],
+      [
+       18103,
+       32
+      ],
+      [
+       19167,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical",
+     "links": [
+      {
+       "start": 11764,
+       "length": 20,
+       "target": {
+        "chain": "L2b",
+        "contract": "SessionMessageParser"
+       }
+      }
+     ]
+    }
+   },
+   "LayerZeroEndpoint": {
+    "address": "0x6edce65403992e310a62460808c4b910d972f10f",
+    "basis": "external",
+    "code": {
+     "maskedHash": "0xc91ea5dcef8775f54c8ad63c5fa2d30e9dbe607712c3b50a0b7414cac104a995",
+     "mask": [
+      [
+       1375,
+       32
+      ],
+      [
+       1969,
+       32
+      ],
+      [
+       11815,
+       32
+      ],
+      [
+       14412,
+       32
+      ],
+      [
+       14515,
+       32
+      ],
+      [
+       16520,
+       32
+      ],
+      [
+       16623,
+       32
+      ]
+     ],
+     "evidence": "sourcify-match"
+    }
+   },
+   "CawCapOracle": {
+    "address": "0x850622d0481719b72f5685bda9ed3b0da02c5c71",
+    "basis": "observed",
+    "code": {
+     "maskedHash": "0xe37b14c83b7057b6f4ebc1d617b88071828de56350b93d2197e03a862bb199bb",
+     "mask": [
+      [
+       388,
+       32
+      ],
+      [
+       893,
+       32
+      ],
+      [
+       2432,
+       32
+      ],
+      [
+       3497,
+       32
+      ],
+      [
+       4215,
+       32
+      ]
+     ],
+     "evidence": "recompile-identical"
+    }
+   },
+   "PathwayExpander": {
+    "address": "0x5e44b8a508fa60b278d176c381ef36da5275e861",
+    "basis": "observed",
+    "code": {
+     "maskedHash": "0x6c8c9c13ddb5ffbb2a278ac26e527b06331468c5d37da2be876f12a3b4e627f0",
+     "mask": [],
+     "evidence": "recompile-identical"
+    }
+   },
+   "SessionMessageParser": {
+    "address": "0xa6d80849b29345efe221ba8ca4c3481f85c7afc9",
+    "basis": "observed",
+    "code": {
+     "maskedHash": "0x8938b559c159187797ab32cebcc76aaab6755a6d2aadbf2257c0b5d62f603687",
+     "mask": [],
+     "evidence": "recompile-identical"
+    }
+   }
+  }
+ },
+ "rules": [
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfile",
+   "call": "CAW()",
+   "target": {
+    "chain": "L1",
+    "contract": "MintableCaw"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfile",
+   "call": "cawProfileLedger()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfileLedger"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfile",
+   "call": "minter()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfileMinter"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfile",
+   "call": "uriGenerator()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfileURI"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfile",
+   "call": "networkManager()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawNetworkManager"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfile",
+   "call": "buyAndBurn()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawBuyAndBurn"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfile",
+   "call": "priceReader()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawL1PriceReader"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfile",
+   "call": "owner()",
+   "target": {
+    "chain": "L1",
+    "contract": "PathwayExpander"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawNetworkManager",
+   "call": "cawProfile()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfile"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawNetworkManager",
+   "call": "minter()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfileMinter"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawNetworkManager",
+   "call": "buyAndBurnAddress()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawBuyAndBurn"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfileMinter",
+   "call": "pathwayExpander()",
+   "target": {
+    "chain": "L1",
+    "contract": "PathwayExpander"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfileMinter",
+   "call": "swapRouter()",
+   "target": {
+    "chain": "L1",
+    "contract": "SwapRouter"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfileMinter",
+   "call": "WETH()",
+   "target": {
+    "chain": "L1",
+    "contract": "WETH"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfileLens",
+   "call": "cawProfile()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfile"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfileLens",
+   "call": "cawProfileMinter()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfileMinter"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfileQuoter",
+   "call": "cawProfile()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfile"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfileMarketplace",
+   "call": "cawProfile()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfile"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfileURI",
+   "call": "fontDataA()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawFontDataA"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfileURI",
+   "call": "fontDataB()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawFontDataB"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawBuyAndBurn",
+   "call": "cawProfile()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfile"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawBuyAndBurn",
+   "call": "CAW()",
+   "target": {
+    "chain": "L1",
+    "contract": "MintableCaw"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfileLedger",
+   "call": "cawProfile()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfile"
+   }
+  },
+  {
+   "type": "value",
+   "chain": "L1",
+   "contract": "CawProfileLedger",
+   "call": "bypassLZ()",
+   "expect": 1
+  },
+  {
+   "type": "value",
+   "chain": "L1",
+   "contract": "CawProfileLedger",
+   "call": "layer1EndpointId()",
+   "expect": 40245
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfileLedger",
+   "call": "cawActions()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawActions"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfileLedger",
+   "call": "erc1271Sibling()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawActionsERC1271"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfileLedger",
+   "call": "capOracle()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawCapOracle"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawProfileLedger",
+   "call": "endpoint()",
+   "target": {
+    "chain": "L1",
+    "contract": "LayerZeroEndpoint"
+   }
+  },
+  {
+   "type": "zero",
+   "chain": "L1",
+   "contract": "CawProfileLedger",
+   "call": "owner()"
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawActions",
+   "call": "cawProfile()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfileLedger"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawActions",
+   "call": "externalSelf()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawActions"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawActions",
+   "call": "erc1271Sibling()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawActionsERC1271"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawActions",
+   "call": "capOracle()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawCapOracle"
+   }
+  },
+  {
+   "type": "zero",
+   "chain": "L1",
+   "contract": "CawActions",
+   "call": "zkVerifier()"
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawActionsERC1271",
+   "call": "cawActions()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawActions"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L1",
+   "contract": "CawActionsERC1271",
+   "call": "cawProfile()",
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfileLedger"
+   }
+  },
+  {
+   "type": "zero",
+   "chain": "L2",
+   "contract": "CawProfileLedger",
+   "call": "cawProfile()"
+  },
+  {
+   "type": "value",
+   "chain": "L2",
+   "contract": "CawProfileLedger",
+   "call": "bypassLZ()",
+   "expect": 0
+  },
+  {
+   "type": "value",
+   "chain": "L2",
+   "contract": "CawProfileLedger",
+   "call": "layer1EndpointId()",
+   "expect": 40161
+  },
+  {
+   "type": "link",
+   "chain": "L2",
+   "contract": "CawProfileLedger",
+   "call": "cawActions()",
+   "target": {
+    "chain": "L2",
+    "contract": "CawActions"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2",
+   "contract": "CawProfileLedger",
+   "call": "erc1271Sibling()",
+   "target": {
+    "chain": "L2",
+    "contract": "CawActionsERC1271"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2",
+   "contract": "CawProfileLedger",
+   "call": "capOracle()",
+   "target": {
+    "chain": "L2",
+    "contract": "CawCapOracle"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2",
+   "contract": "CawProfileLedger",
+   "call": "endpoint()",
+   "target": {
+    "chain": "L2",
+    "contract": "LayerZeroEndpoint"
+   }
+  },
+  {
+   "type": "zero",
+   "chain": "L2",
+   "contract": "CawProfileLedger",
+   "call": "owner()"
+  },
+  {
+   "type": "link",
+   "chain": "L2",
+   "contract": "CawActions",
+   "call": "cawProfile()",
+   "target": {
+    "chain": "L2",
+    "contract": "CawProfileLedger"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2",
+   "contract": "CawActions",
+   "call": "externalSelf()",
+   "target": {
+    "chain": "L2",
+    "contract": "CawActions"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2",
+   "contract": "CawActions",
+   "call": "erc1271Sibling()",
+   "target": {
+    "chain": "L2",
+    "contract": "CawActionsERC1271"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2",
+   "contract": "CawActions",
+   "call": "capOracle()",
+   "target": {
+    "chain": "L2",
+    "contract": "CawCapOracle"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2",
+   "contract": "CawActions",
+   "call": "zkVerifier()",
+   "target": {
+    "chain": "L2",
+    "contract": "SP1Verifier"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2",
+   "contract": "CawActionsERC1271",
+   "call": "cawActions()",
+   "target": {
+    "chain": "L2",
+    "contract": "CawActions"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2",
+   "contract": "CawActionsERC1271",
+   "call": "cawProfile()",
+   "target": {
+    "chain": "L2",
+    "contract": "CawProfileLedger"
+   }
+  },
+  {
+   "type": "zero",
+   "chain": "L2b",
+   "contract": "CawProfileLedger",
+   "call": "cawProfile()"
+  },
+  {
+   "type": "value",
+   "chain": "L2b",
+   "contract": "CawProfileLedger",
+   "call": "bypassLZ()",
+   "expect": 0
+  },
+  {
+   "type": "value",
+   "chain": "L2b",
+   "contract": "CawProfileLedger",
+   "call": "layer1EndpointId()",
+   "expect": 40161
+  },
+  {
+   "type": "link",
+   "chain": "L2b",
+   "contract": "CawProfileLedger",
+   "call": "cawActions()",
+   "target": {
+    "chain": "L2b",
+    "contract": "CawActions"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2b",
+   "contract": "CawProfileLedger",
+   "call": "erc1271Sibling()",
+   "target": {
+    "chain": "L2b",
+    "contract": "CawActionsERC1271"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2b",
+   "contract": "CawProfileLedger",
+   "call": "capOracle()",
+   "target": {
+    "chain": "L2b",
+    "contract": "CawCapOracle"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2b",
+   "contract": "CawProfileLedger",
+   "call": "endpoint()",
+   "target": {
+    "chain": "L2b",
+    "contract": "LayerZeroEndpoint"
+   }
+  },
+  {
+   "type": "zero",
+   "chain": "L2b",
+   "contract": "CawProfileLedger",
+   "call": "owner()"
+  },
+  {
+   "type": "link",
+   "chain": "L2b",
+   "contract": "CawActions",
+   "call": "cawProfile()",
+   "target": {
+    "chain": "L2b",
+    "contract": "CawProfileLedger"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2b",
+   "contract": "CawActions",
+   "call": "externalSelf()",
+   "target": {
+    "chain": "L2b",
+    "contract": "CawActions"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2b",
+   "contract": "CawActions",
+   "call": "erc1271Sibling()",
+   "target": {
+    "chain": "L2b",
+    "contract": "CawActionsERC1271"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2b",
+   "contract": "CawActions",
+   "call": "capOracle()",
+   "target": {
+    "chain": "L2b",
+    "contract": "CawCapOracle"
+   }
+  },
+  {
+   "type": "zero",
+   "chain": "L2b",
+   "contract": "CawActions",
+   "call": "zkVerifier()"
+  },
+  {
+   "type": "link",
+   "chain": "L2b",
+   "contract": "CawActionsERC1271",
+   "call": "cawActions()",
+   "target": {
+    "chain": "L2b",
+    "contract": "CawActions"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2b",
+   "contract": "CawActionsERC1271",
+   "call": "cawProfile()",
+   "target": {
+    "chain": "L2b",
+    "contract": "CawProfileLedger"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2",
+   "contract": "CawChallengeRelay",
+   "call": "cawActions()",
+   "target": {
+    "chain": "L2",
+    "contract": "CawActions"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2",
+   "contract": "CawActionsArchive",
+   "call": "owner()",
+   "target": {
+    "chain": "L2",
+    "contract": "PathwayExpander"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2",
+   "contract": "CawChallengeRelay",
+   "call": "owner()",
+   "target": {
+    "chain": "L2",
+    "contract": "PathwayExpander"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2b",
+   "contract": "CawChallengeRelay",
+   "call": "cawActions()",
+   "target": {
+    "chain": "L2b",
+    "contract": "CawActions"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2b",
+   "contract": "CawActionsArchive",
+   "call": "owner()",
+   "target": {
+    "chain": "L2b",
+    "contract": "PathwayExpander"
+   }
+  },
+  {
+   "type": "link",
+   "chain": "L2b",
+   "contract": "CawChallengeRelay",
+   "call": "owner()",
+   "target": {
+    "chain": "L2b",
+    "contract": "PathwayExpander"
+   }
+  },
+  {
+   "type": "peer",
+   "chain": "L1",
+   "contract": "CawProfile",
+   "eid": 40245,
+   "target": {
+    "chain": "L2",
+    "contract": "CawProfileLedger"
+   }
+  },
+  {
+   "type": "peer",
+   "chain": "L1",
+   "contract": "CawProfile",
+   "eid": 40231,
+   "target": {
+    "chain": "L2b",
+    "contract": "CawProfileLedger"
+   }
+  },
+  {
+   "type": "peer",
+   "chain": "L2",
+   "contract": "CawProfileLedger",
+   "eid": 40161,
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfile"
+   }
+  },
+  {
+   "type": "peer",
+   "chain": "L2b",
+   "contract": "CawProfileLedger",
+   "eid": 40161,
+   "target": {
+    "chain": "L1",
+    "contract": "CawProfile"
+   }
+  },
+  {
+   "type": "delegate",
+   "chain": "L1",
+   "contract": "CawProfile",
+   "endpoint": {
+    "chain": "L1",
+    "contract": "LayerZeroEndpoint"
+   },
+   "target": {
+    "chain": "L1",
+    "contract": "PathwayExpander"
+   }
+  },
+  {
+   "type": "delegate",
+   "chain": "L1",
+   "contract": "CawProfileLedger",
+   "endpoint": {
+    "chain": "L1",
+    "contract": "LayerZeroEndpoint"
+   },
+   "target": {
+    "chain": "L1",
+    "contract": "PathwayExpander"
+   }
+  },
+  {
+   "type": "delegate",
+   "chain": "L2",
+   "contract": "CawProfileLedger",
+   "endpoint": {
+    "chain": "L2",
+    "contract": "LayerZeroEndpoint"
+   },
+   "target": {
+    "chain": "L2",
+    "contract": "PathwayExpander"
+   }
+  },
+  {
+   "type": "delegate",
+   "chain": "L2",
+   "contract": "CawActionsArchive",
+   "endpoint": {
+    "chain": "L2",
+    "contract": "LayerZeroEndpoint"
+   },
+   "target": {
+    "chain": "L2",
+    "contract": "PathwayExpander"
+   }
+  },
+  {
+   "type": "delegate",
+   "chain": "L2",
+   "contract": "CawChallengeRelay",
+   "endpoint": {
+    "chain": "L2",
+    "contract": "LayerZeroEndpoint"
+   },
+   "target": {
+    "chain": "L2",
+    "contract": "PathwayExpander"
+   }
+  },
+  {
+   "type": "delegate",
+   "chain": "L2b",
+   "contract": "CawProfileLedger",
+   "endpoint": {
+    "chain": "L2b",
+    "contract": "LayerZeroEndpoint"
+   },
+   "target": {
+    "chain": "L2b",
+    "contract": "PathwayExpander"
+   }
+  },
+  {
+   "type": "delegate",
+   "chain": "L2b",
+   "contract": "CawActionsArchive",
+   "endpoint": {
+    "chain": "L2b",
+    "contract": "LayerZeroEndpoint"
+   },
+   "target": {
+    "chain": "L2b",
+    "contract": "PathwayExpander"
+   }
+  },
+  {
+   "type": "delegate",
+   "chain": "L2b",
+   "contract": "CawChallengeRelay",
+   "endpoint": {
+    "chain": "L2b",
+    "contract": "LayerZeroEndpoint"
+   },
+   "target": {
+    "chain": "L2b",
+    "contract": "PathwayExpander"
+   }
+  }
+ ],
+ "provenance": {
+  "recompile": {
+   "sourceCommit": "97cd13f3a1423f702d411472fdd2b2a2e7bfbd59",
+   "compiler": "0.8.30+commit.73712a01",
+   "compilerSha256": "0xf3e987dc6ecebd4bd350c48edcbc320b46cf9e3109bd3fc3d88f1acaf4c428f7",
+   "compilerSource": "https://binaries.soliditylang.org/linux-amd64 (sha256 checked against the official list.json)",
+   "settings": {
+    "viaIR": true,
+    "optimizer": {
+     "enabled": true,
+     "runs": 1
+    },
+    "evmVersion": "cancun"
+   },
+   "dependencies": {
+    "@openzeppelin/contracts": {
+     "version": "4.9.6",
+     "integrity": "sha512-xSmezSupL+y9VkHZJGDoCBpmnB2ogM13ccaYDWqJTfS3dbuHkgjuwDFUmaFauBCboQMGB/S5UqUl2y54X99BmA=="
+    },
+    "@openzeppelin/contracts-upgradeable": {
+     "version": "4.9.6",
+     "integrity": "sha512-m4iHazOsOCv1DgM7eD7GupTJ+NFVujRZt1wzddDPSVGpWdKq1SKkla5htKG7+IS4d2XOCtzkUNwRZ7Vq5aEUMA=="
+    },
+    "@layerzerolabs/lz-evm-protocol-v2": {
+     "version": "2.3.44",
+     "integrity": "sha512-oNtwl4HGCogFVOr45T3FfrkB0/CRW2eGAEScBw/FY/6mlncnS4dqlvrCJ3SFlK17cu1w9q0ztD3NzS9sUrb7vw=="
+    },
+    "@layerzerolabs/lz-evm-oapp-v2": {
+     "version": "2.3.44",
+     "integrity": "sha512-FNm9+OFKOl+/5JvpV6rMUoHZSePOcLtNJ+GHJuf38xPmEe0ehxFVQBw3iIfaH2dsWzRn/T7ZizV5ouId35FLdg=="
+    },
+    "@layerzerolabs/lz-evm-messagelib-v2": {
+     "version": "3.0.168",
+     "integrity": "sha512-tNrpfDu9nhB+/onG3Qzby0PFqi21HpW9dI9oa4HulW5/VfiMQllj2gKOX+BEemokdq2JQhAHvj8dTkp0euXPPg=="
+    },
+    "@layerzerolabs/oapp-evm": {
+     "version": "0.4.1",
+     "integrity": "sha512-eOoDepVSrUlVNIlnkH0Vd5Vt4lXBkSBh6Bb16vsLbaN9AryBjy4GDpsE7K4c8iWTFL9BiBXGsV7nJTkgqi+xRQ=="
+    },
+    "@layerzerolabs/oft-evm": {
+     "version": "0.0.11",
+     "integrity": "sha512-lkhEiwMrcC0CtMcHkTTnaJwOsE/tE4MiO1nbU3QcWrTOGQj0BGiH05c50+lvZeFHlObp/QpIDXELnJgd2rz29w=="
+    },
+    "solidity-bytes-utils": {
+     "version": "0.8.4",
+     "integrity": "sha512-/bjac5YR12i0plOKvGlhE51F5IWGP6rI8DJetCQlXcnwKWz/Hgf/vr+Qlk1BWz56xVcwVhmhCaDkTMnx5xvt0g=="
+    }
+   },
+   "dependenciesSource": "solidity/package-lock.json at the source commit (sha512 integrity checked)",
+   "note": "contracts compiled one file at a time; chain code compared with immutable and library-link regions of solc's output zeroed"
+  },
+  "olderCompiler": {
+   "MintableCaw": {
+    "compiler": "0.8.22+commit.4fc1097e",
+    "compilerSha256": "0x8be0aeb74fc1b8213292a09a84cb524a403602526df87ecad5f5cd2a7ea7d089",
+    "settings": {
+     "viaIR": true,
+     "optimizer": {
+      "enabled": true,
+      "runs": 200
+     },
+     "evmVersion": "default (shanghai)"
+    },
+    "note": "the testnet token's metadata names solc 0.8.22; every version of contracts/MintableCaw.sol in the repo history gives the same runtime code under these settings, except the metadata hash"
+   }
+  }
+ }
+}

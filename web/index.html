@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Release check results</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <div class="topbar">
+      <h1 id="title">Release check results</h1>
+      <div class="lang" role="group" aria-labelledby="lang-label">
+        <span id="lang-label" class="sr">Language</span>
+        <button id="lang-en" type="button" aria-pressed="true">EN</button>
+        <button id="lang-ja" type="button" aria-pressed="false">日本語</button>
+      </div>
+    </div>
+    <p id="lead"></p>
+    <p id="unofficial" class="notice"></p>
+  </header>
+
+  <section id="checker" class="checker" hidden>
+    <label id="check-label" for="check-input"></label>
+    <div class="check-row">
+      <input id="check-input" type="text" inputmode="url" autocomplete="off" spellcheck="false" maxlength="300">
+      <button id="btn-check" type="button"></button>
+    </div>
+  </section>
+
+  <section id="loader" class="loader">
+    <label class="file-button"><span id="btn-file-label"></span><input id="file-input" type="file" accept="application/json,.json"></label>
+    <div class="paste">
+      <label id="paste-label" for="paste-input"></label>
+      <textarea id="paste-input" rows="3" spellcheck="false"></textarea>
+      <button id="btn-show" type="button"></button>
+    </div>
+  </section>
+
+  <p id="message" role="status" aria-live="polite"></p>
+  <div id="results"></div>
+
+  <section class="about">
+    <h2 id="limits-title"></h2>
+    <ul id="limits-list"></ul>
+    <div id="how">
+      <h2 id="how-title"></h2>
+      <pre><code id="how-cmd"></code></pre>
+    </div>
+  </section>
+</main>
+<script src="render.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
