@@ -9,10 +9,15 @@ Status: prototypes. The three checks exist (`contract-check`, `bridge`, `fronten
 ## Try it
 
 An example instance of the contract check runs at **https://caw-frontend-verify.zinsanjp.workers.dev**. It is run by
-one person, the author of this repository, as a trial. It is not run by the CAW project, and it may change or stop.
+one person, [zinsanjp](https://github.com/zinsanjp), as a trial. It is not run by the CAW project or by the Caw-Lab
+organization that hosts this code, and it may change or stop.
 Type the address of a CAW node: the service reads the site's main script and compares the contract addresses in it
 with those of Gilgamesh's master branch (V2). It does not check the files yet, and one address may ask only a few
 times a minute. A result states what was found; it is not a guarantee of safety.
+
+**Contact.** To ask that a site is not checked, to report a problem, or for anything else about the instance, open an
+[issue](https://github.com/Caw-Lab/caw-frontend-verify/issues) in this repository, or reach zinsanjp through the
+[GitHub profile](https://github.com/zinsanjp).
 
 The service is a Cloudflare Worker: anyone with a Cloudflare account can run the same one (see [`hosted/`](hosted/README.md)).
 A version for an ordinary server is not provided yet. It would need more protection against requests to internal
