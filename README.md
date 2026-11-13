@@ -1,17 +1,26 @@
 # caw-frontend-verify
 
-Small, read-only tools to check that what a CAW node serves and points at is what a published
-reference says it should be. Not affiliated with, or endorsed by, the CAW project. A passing check
-means "consistent with the reference", not "safe".
+Checks which code a CAW website is based on, and which contracts it connects to.
 
-Status: prototypes. The three checks exist (`contract-check`, `bridge`, `frontend-check`) and `verify` runs them together from a command line; a static page (`web/`) shows their results; a scheduled monitor does not exist yet.
+[CAW Protocol](https://github.com/GilgameshCaw/Caw) is a decentralized social network. Anyone can run a node and a
+website (the frontend) for it, so a website that looks like CAW may or may not be built from a published CAW release,
+and may or may not point at the contracts of that release. The small, read-only tools here compare a site with a
+published release (at present the `master` branch of GilgameshCaw/Caw) and state what was found: which contracts
+the site points at, and whether they are the release's. Not affiliated with, or endorsed by, the CAW project. A
+passing check means "consistent with the reference", not "safe".
+
+Status: prototypes. Two things can be checked: the contracts a site points at (**available**), and the files a site
+serves (**planned**: it needs fingerprints of the files built from published code, which do not exist yet).
+Three tools exist (`contract-check`, `bridge`, `frontend-check`), `verify` runs them together from a command line,
+and a static page (`web/`) shows the results. A public trial instance of the contract check is described below. A
+scheduled monitor is not part of this repository.
 
 ## Try it
 
 An example instance of the contract check runs at **https://caw-frontend-verify.zinsanjp.workers.dev**. It is run by
 one person, [zinsanjp](https://github.com/zinsanjp), as a trial. It is not run by the CAW project or by the Caw-Lab
 organization that hosts this code, and it may change or stop.
-Type the address of a CAW node: the service reads the site's main script and compares the contract addresses in it
+Type the address of a CAW website: the service reads the site's main script and compares the contract addresses in it
 with those of Gilgamesh's master branch (V2). It does not check the files yet, and one address may ask only a few
 times a minute. A result states what was found; it is not a guarantee of safety.
 
@@ -39,7 +48,7 @@ python3 serve_local.py                 # or a local page with a box for the addr
 | [`frontend-check/`](frontend-check/) | compares the files a node serves with a frontend manifest (SHA-256 per file) | prototype (Python, standard library only) |
 | [`bridge/`](bridge/) | joins the two: the contract addresses compiled into a frontend's entry script are compared with an address fingerprint of a reference build (which contracts does this frontend point at?) | prototype (Python, standard library only) |
 | [`verify/`](verify/) | runs the three checks for a site against a release registry and states the facts side by side (no ranking) | prototype (Python, standard library only) |
-| [`hosted/`](hosted/) | a public service (Cloudflare Worker): the contract check for any site, behind the page of `web/` | written and tested; not deployed yet |
+| [`hosted/`](hosted/) | a public service (Cloudflare Worker): the contract check for any site, behind the page of `web/` | tested; one trial instance runs (see Try it) |
 | [`web/`](web/) | a static page that shows results in English and Japanese; with `verify/serve_local.py` it has a box where a site address is typed | first version (HTML and JavaScript, no dependencies) |
 | [`.github/workflows/repro.yml`](.github/workflows/repro.yml), [`scripts/`](scripts/) | builds one published commit of the upstream frontend on several GitHub Actions runners and compares the build manifests; the way to get file fingerprints that the frontend file check will need | experiment (stage 1), see [`docs/reproducibility.md`](docs/reproducibility.md) |
 | [`formats/`](formats/) | specifications of the reference files, the release registry and the status file | contract reference, release registry and status file: v1; others: drafts |
