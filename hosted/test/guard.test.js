@@ -53,7 +53,7 @@ const respond = (body, init = {}) => new Response(body, init);
 
 test('a file is read when the answer is 200 and small enough', async () => {
   const seen = [];
-  const s = new HttpSource('https://x.org', { fetchImpl: async (url, o) => { seen.push([url, o]); return respond('hello'); } });
+  const s = new HttpSource('https://x.org', { fetchImpl: async function (url, o) { platformOk(o, this); seen.push([url, o]); return respond('hello'); } });
   assert.equal(new TextDecoder().decode(await s.get('/assets/a.js', 100)), 'hello');
   assert.equal(seen[0][0], 'https://x.org/assets/a.js');
   assert.equal(seen[0][1].redirect, 'manual', 'redirects are never followed');
@@ -101,7 +101,14 @@ test('a body that stalls after the headers is cut off by the timeout', async () 
 });
 
 // ---------------------------------------------------------------- where a name points
-const doh = (table) => async (url) => {
+// The platform accepts only 'follow' and 'manual' for redirect; a fake that accepted more would hide a failure that only shows there.
+// It also refuses fetch called with another `this` (as a method of an object): "Illegal invocation".
+const platformOk = (o, self) => {
+  assert.ok(['manual', 'follow', undefined].includes(o && o.redirect), `redirect: ${o && o.redirect}`);
+  assert.ok(self === undefined || self === globalThis, 'fetch was called as a method of another object');
+};
+const doh = (table) => async function (url, o) {
+  platformOk(o, this);
   const u = new URL(url);
   assert.equal(u.hostname, 'cloudflare-dns.com');
   const entry = table[u.searchParams.get('name')];
@@ -126,4 +133,9 @@ test('a name is accepted only when every address it points at is public', async 
   await assert.rejects(requirePublicResolution('gone.org', doh({})), (e) => e instanceof Invalid && /does not exist/.test(e.message));
   await assert.rejects(requirePublicResolution('x.org', doh({ 'x.org': 'fail' })), Unreadable);
   await assert.rejects(requirePublicResolution('x.org', doh({ 'x.org': 'bad' })), Unreadable);
+});
+
+test('a redirect from the name service is a failure of the look-up, never followed', async () => {
+  const redirecting = async (url, o) => { platformOk(o); return new Response(null, { status: 302, headers: { location: 'https://evil.example.org/' } }); };
+  await assert.rejects(requirePublicResolution('x.org', redirecting), Unreadable);
 });

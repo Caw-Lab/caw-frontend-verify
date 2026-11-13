@@ -50,12 +50,28 @@ a match.
 
 ## Tests
 
-`npm test` (Node 22; no dependencies are needed to test): 33 tests on the check (the same situations as the Python
+`npm test` (Node 22; no dependencies are needed to test): 34 tests on the check (the same situations as the Python
 tool's tests, plus extra address only, preloads, limits), on the address rules (about 70 inputs), the IPv4 and IPv6
 classification, the bounded reading (redirect, status, size, stalls, timeouts, no detail of the other side in any
 message), the name look-up, and the entry point (every refusal happens before any outside request, limits, cache,
 no leak of internals). On real sites the result is the same as the Python tool's
 (`cawnest.com`: 15 of 15, a match; `caw-testnode.com`: 5 of 15, 10 missing, 7 not in the build).
+
+### What running it in the Workers runtime showed
+
+The tests run in Node, and Node is more permissive than the platform. Running the service in the local Workers
+runtime (`wrangler dev --local`) found two things that no Node test could, both now fixed and covered by tests whose
+fake `fetch` refuses what the platform refuses:
+
+- the platform has no `redirect: 'error'` mode (only `follow` and `manual`); the name look-up used it and failed for every site;
+- `fetch` called as a method of another object (`this.fetchImpl(...)`) throws "Illegal invocation".
+
+In that runtime, on real sites, the answers equal the Python tool's (`cawnest.com` a match, 15 of 15; `caw-testnode.com`
+5 of 15, 10 missing, 7 not in the build; `example.org` unreadable, HTTP 404), the second check is answered from the cache,
+names that point at private addresses (`127.0.0.1.nip.io`, `169.254.169.254.nip.io`, `10.0.0.1.nip.io`, `192-168-0-1.sslip.io`)
+are refused, static files are served with the security headers, and the files listed in `web/.assetsignore` are not served.
+Not covered by that run: the box for the address in a browser over https (the page shows it only over https for this
+service), the platform's own limits, and everything that depends on the real network of Cloudflare.
 
 `make_data.py` makes `src/data.json` (the published addresses and the names shown to a reader) from
 `../references/`; `python3 make_data.py --check` says whether it is up to date, and a test recomputes it independently.
@@ -74,8 +90,8 @@ Things to check on the first day, because they could not be checked before deplo
 1. The page opens and the box for the address appears (the Worker answers `/api/info`).
 2. `cawnest.com` gives a match and `caw-testnode.com` a difference.
 3. A name that points at a private address is refused (for example `127.0.0.1.nip.io`).
-4. The second check of a site within five minutes shows `x-cache: hit` (whether the Cache API works on `workers.dev` was not confirmed;
-   without it the memory of one running copy is used).
+4. The second check of a site within five minutes shows `x-cache: hit` (it did in the local runtime; whether the Cache API works on
+   `workers.dev` was not confirmed; without it the memory of one running copy is used).
 5. The CPU time per check in the Cloudflare dashboard. The Free plan allows 10 ms per request; extracting the addresses
    from a 1.8 MB script took about 1.5 ms in Node, which leaves room, but the real figure is the one in the dashboard.
    If it is too high, the Paid plan ($5 a month at the time of writing) raises the limit.

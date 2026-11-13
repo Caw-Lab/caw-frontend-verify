@@ -46,7 +46,8 @@ export function normalizeSite(input, selfHostname = '') {
 export class HttpSource {
   constructor(origin, { fetchImpl = fetch, timeoutMs = 10000, userAgent = 'caw-frontend-verify-hosted/0 (+https://github.com/Zinsanjp/caw-frontend-verify)' } = {}) {
     this.origin = origin;
-    this.fetchImpl = fetchImpl;
+    // fetch must not be called as a method of this object: the platform refuses ("Illegal invocation")
+    this.fetchImpl = (...args) => fetchImpl(...args);
     this.timeoutMs = timeoutMs;
     this.userAgent = userAgent;
     this.requests = 0;
@@ -180,9 +181,9 @@ export async function requirePublicResolution(host, fetchImpl = fetch, timeoutMs
     let data;
     try {
       const r = await fetchImpl(`https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(host)}&type=${type}`, {
-        headers: { accept: 'application/dns-json' }, redirect: 'error', signal: ctl.signal,
+        headers: { accept: 'application/dns-json' }, redirect: 'manual', signal: ctl.signal,   // the platform has no 'error' mode
       });
-      if (!r.ok) throw new Error('bad status');
+      if (!r.ok) throw new Error('bad status');   // a redirect is not an answer either
       data = await r.json();
     } catch {
       throw new Unreadable('the name could not be looked up');

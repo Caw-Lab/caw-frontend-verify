@@ -14,7 +14,9 @@ const goodSite = () => ({ 'index.html': '<script type="module" src="/assets/inde
 // A fake outside world: sites by host name (files by path) and DNS answers by host name.
 function world({ sites = {}, dns = {} } = {}) {
   const log = { site: [], dns: [] };
-  const fetchImpl = async (url) => {
+  const fetchImpl = async function (url, o) {
+    assert.ok(['manual', 'follow', undefined].includes(o && o.redirect), `the platform does not accept redirect: ${o && o.redirect}`);
+    assert.ok(this === undefined || this === globalThis, 'fetch was called as a method of another object (the platform refuses)');
     const u = new URL(url);
     if (u.hostname === 'cloudflare-dns.com') {
       const name = u.searchParams.get('name');
@@ -195,7 +197,8 @@ test('an unexpected failure shows nothing of the inside', async () => {
 test('a site that is slow to answer makes the whole check give up in time', async () => {
   const { env } = world({ sites: { 'good.org': goodSite() } });
   const never = new Promise(() => {});
-  const slowEnv = { ...env, fetchImpl: async (url) => (new URL(url).hostname === 'cloudflare-dns.com' ? env.fetchImpl(url) : never) };
+  const inner = env.fetchImpl;
+  const slowEnv = { ...env, fetchImpl: async (url, o) => (new URL(url).hostname === 'cloudflare-dns.com' ? inner(url, o) : never) };
   const saved = SETTINGS.overallTimeoutMs;
   SETTINGS.overallTimeoutMs = 50;
   try {
