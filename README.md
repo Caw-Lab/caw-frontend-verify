@@ -20,7 +20,7 @@ addresses than the platform gives (see `hosted/README.md`). The checks themselve
 them on your own computer or server:
 
 ```sh
-git clone https://github.com/Zinsanjp/caw-frontend-verify.git
+git clone https://github.com/Caw-Lab/caw-frontend-verify.git
 cd caw-frontend-verify/verify
 python3 verify_site.py cawnest.com     # from the command line
 python3 serve_local.py                 # or a local page with a box for the address

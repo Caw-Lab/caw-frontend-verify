@@ -44,7 +44,7 @@ export function normalizeSite(input, selfHostname = '') {
 
 // Reads files of one origin: no redirects, a size limit, a time limit.
 export class HttpSource {
-  constructor(origin, { fetchImpl = fetch, timeoutMs = 10000, userAgent = 'caw-frontend-verify-hosted/0 (+https://github.com/Zinsanjp/caw-frontend-verify)' } = {}) {
+  constructor(origin, { fetchImpl = fetch, timeoutMs = 10000, userAgent = 'caw-frontend-verify-hosted/0 (+https://github.com/Caw-Lab/caw-frontend-verify)' } = {}) {
     this.origin = origin;
     // fetch must not be called as a method of this object: the platform refuses ("Illegal invocation")
     this.fetchImpl = (...args) => fetchImpl(...args);
