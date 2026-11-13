@@ -45,7 +45,7 @@ conclusion, not checked); there is no red, and every state is also written in wo
 
 ## Tests
 
-`node --test test/render_test.js` (Node 22): 29 tests on the view model, the wording (English and Japanese,
+`node --test test/render_test.js` (Node 22): 30 tests on the view model, the wording (English and Japanese,
 and that a failure never reads like the success sentence), long or hostile input, and static checks of the
 page (content security policy, no external resources, no dangerous APIs).
 

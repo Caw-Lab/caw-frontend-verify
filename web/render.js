@@ -129,7 +129,7 @@
       checkFiles: 'Frontend file check', checkFilesHelp: 'Checks that the files the site serves are the same as the files built from the code of {source}.',
       checkContracts: 'Contract check', checkContractsHelp: 'Compares the contract addresses written in the site with the list. Addresses that are not in the list are also looked up on the chains.',
       namedOnChain: 'Chain state of the addresses not in the list',
-      namedOnChainHelp: 'For addresses written in the site but not in the list: is there contract code on the chains, and is it the same code as one of the list’s contracts',
+      namedOnChainHelp: 'For addresses written in the site but not in the list: is there contract code on the chains, and is it the same code as one of the list’s contracts. This does not show what a contract does, nor that a node really uses it.',
       releaseChain: 'Contracts of the list on the chains', releaseChainHelp: 'The contracts of the list, compared with what is actually on the chains',
       chainName: { L1: 'Sepolia', L2: 'Base Sepolia', L2b: 'Arbitrum Sepolia' },
       addrSame: '{chain}: same code as the list’s {name}', addrOther: '{chain}: contract code ({bytes} bytes) that is none of the list’s',
@@ -144,7 +144,6 @@
       limitsTitle: 'What these checks show, and what they do not',
       limits: [
         'Contract addresses in the site: only the addresses written in the site’s main script (the first JavaScript file it loads) are looked at. This does not show that the files are unchanged, nor what the node’s server side actually reads.',
-        'Chain state of the addresses not in the list: shows what is on the chains at those addresses. It does not show what a contract does, nor that a node really uses it.',
         'Frontend file check: planned to compare the site’s files with fingerprints of the files built from published code (at present, Gilgamesh’s master branch). There are no such fingerprints yet, so it is not done at present.',
         'A site can answer differently depending on who asks, and a page can build addresses while it runs. These checks cannot tell those cases apart.'
       ],
@@ -167,7 +166,7 @@
       checkFiles: 'フロントエンドのファイルチェック', checkFilesHelp: 'サイトが配っているファイルが、{source} のコードをビルドしたファイルと同じかを確かめます。',
       checkContracts: 'コントラクトのチェック', checkContractsHelp: 'サイトに書かれているコントラクトのアドレスを、一覧と比べます。一覧にないアドレスは、チェーン上で何があるかも調べます。',
       namedOnChain: '一覧にないアドレスの、チェーン上の状態',
-      namedOnChainHelp: 'サイトに書かれているが、一覧にないアドレスについて、チェーン上にコントラクトのコードがあるか、一覧のコントラクトと同じコードかを調べます',
+      namedOnChainHelp: 'サイトに書かれているが、一覧にないアドレスについて、チェーン上にコントラクトのコードがあるか、一覧のコントラクトと同じコードかを調べます。コントラクトが何をするかや、ノードが実際にそれを使っているかは、分かりません。',
       releaseChain: '一覧のコントラクトの、チェーン上の状態', releaseChainHelp: '一覧にあるコントラクトを、チェーン上にある実物と比べます',
       chainName: { L1: 'Sepolia', L2: 'Base Sepolia', L2b: 'Arbitrum Sepolia' },
       addrSame: '{chain}: 一覧の {name} と同じコード', addrOther: '{chain}: 一覧のどれとも違うコード({bytes} バイト)',
@@ -182,7 +181,6 @@
       limitsTitle: 'この検査で分かること、分からないこと',
       limits: [
         'サイトに書かれたコントラクトのアドレス: サイトの主なスクリプト(最初に読み込まれる JavaScript)に書かれたアドレスだけを見ます。ファイルが書き換えられていないことや、ノードのサーバー側が実際に何を読んでいるかは、分かりません。',
-        '一覧にないアドレスの、チェーン上の状態: そのアドレスに、チェーン上で何があるかを示します。コントラクトが何をするかや、ノードが実際にそれを使っているかは、分かりません。',
         'フロントエンドのファイルチェック: 公開されているコード(いまは Gilgamesh の master ブランチ)をビルドしたファイルの指紋と、サイトのファイルを比べる予定です。その指紋がまだないので、いまは行っていません。',
         'サイトは、アクセスした相手によって違う内容を返すことができ、ページは動いている間にアドレスを組み立てることもできます。この検査では、それを見分けられません。'
       ],

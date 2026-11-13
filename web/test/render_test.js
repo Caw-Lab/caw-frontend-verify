@@ -289,3 +289,13 @@ test('opening or pasting a result file is hidden when the check box is shown, an
   assert.ok(/\$\('how'\)\.hidden = true/.test(src), 'the command example is hidden with the box');
   assert.ok(/\.loader\[hidden\]\s*\{\s*display:\s*none/.test(css), 'the hidden attribute must win over the flex layout');
 });
+
+test('the list of what the checks show has no line for a row the service does not produce, and the row itself carries the caveat', () => {
+  for (const lang of ['en', 'ja']) {
+    const t = V.T[lang];
+    assert.equal(t.limits.length, 3, 'three lines: addresses, files, who asks');
+    assert.ok(!t.limits.some((l) => l.includes(lang === 'ja' ? '一覧にないアドレスの、チェーン上の状態' : 'Chain state of the addresses')), 'no line about the opt-in row');
+  }
+  assert.match(V.T.ja.namedOnChainHelp, /ノードが実際にそれを使っているかは、分かりません/);
+  assert.match(V.T.en.namedOnChainHelp, /nor that a node really uses it/);
+});
