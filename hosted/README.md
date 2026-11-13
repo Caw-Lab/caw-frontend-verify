@@ -85,15 +85,21 @@ npx wrangler login
 npx wrangler deploy         # prints the address, https://caw-frontend-verify.<your-subdomain>.workers.dev
 ```
 
-Things to check on the first day, because they could not be checked before deploying:
+### First deploy (2026-11-13, Free plan, `workers.dev`)
 
-1. The page opens and the box for the address appears (the Worker answers `/api/info`).
-2. `cawnest.com` gives a match and `caw-testnode.com` a difference.
-3. A name that points at a private address is refused (for example `127.0.0.1.nip.io`).
-4. The second check of a site within five minutes shows `x-cache: hit` (it did in the local runtime; whether the Cache API works on
-   `workers.dev` was not confirmed; without it the memory of one running copy is used).
-5. The CPU time per check in the Cloudflare dashboard. The Free plan allows 10 ms per request; extracting the addresses
-   from a 1.8 MB script took about 1.5 ms in Node, which leaves room, but the real figure is the one in the dashboard.
-   If it is too high, the Paid plan ($5 a month at the time of writing) raises the limit.
+Checked from outside on the deployed service:
+
+1. The page opens over https and the box for the address appears; the result loader and the command example are hidden (checked with a browser).
+2. `cawnest.com`: a match, 15 of 15. `caw-testnode.com`: 5 of 15, 10 missing, 7 not in the build. `example.org`: unreadable (HTTP 404). The
+   same as the Python tool. A check took about 3 to 5 seconds when the site was not in the cache, 0.2 seconds when it was.
+3. Names that point at private addresses (`127.0.0.1.nip.io`, `169.254.169.254.nip.io`, `10.0.0.1.nip.io`) are refused.
+4. The second check of a site is answered with `x-cache: hit`. Whether this comes from the platform's cache or from the memory of one running copy is not known.
+5. The static files are served with the security headers; `README.md`, `sample-status.json`, `test/` and the other ignored files are not served.
+6. A call without the `X-Requested-With` header, with a foreign `Origin`, with another method, an `http://` address and an IP address are all refused.
+
+Not confirmed: the CPU time per check (the dashboard shows it; the Free plan allows 10 ms and none of the checks above was
+stopped for exceeding it, which is evidence, not proof), the rate-limit binding on the Free plan (not enabled; the limit
+inside the running copies is what works now), and the platform's own refusal to reach private networks (the name look-up
+refuses them first, so it was not exercised).
 
 License: MIT, see [`../LICENSE`](../LICENSE). Copyright (c) 2026 zinsanjp and contributors.
