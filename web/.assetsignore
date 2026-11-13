@@ -1,0 +1,5 @@
+# Files of this folder that the hosted service does not serve.
+.assetsignore
+README.md
+sample-status.json
+test

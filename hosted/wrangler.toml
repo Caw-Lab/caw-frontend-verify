@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 zinsanjp and contributors
+#
+# The hosted contract check. Deploy from this folder:  npx wrangler deploy
+name = "caw-frontend-verify"
+main = "src/worker.js"
+compatibility_date = "2026-11-01"
+
+# The page. Requests for these files are answered without running the Worker.
+[assets]
+directory = "../web"
+binding = "ASSETS"
+
+# Optional: a rate limit that is shared by all copies of the service in one location. Without it the
+# service limits each address inside every running copy, which is weaker. Needs Wrangler 4.36 or later;
+# whether it is available on the Free plan was not confirmed. Remove the comment marks to try it.
+#
+# [[ratelimits]]
+# name = "RATE_LIMITER"
+# namespace_id = "1001"
+# simple = { limit = 10, period = 60 }

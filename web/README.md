@@ -16,6 +16,7 @@ address. The page can be put on any static host.
   [`../verify/README.md`](../verify/README.md) for what the local server does and how it protects itself. The box
   exists only when the page is served by that local server; anywhere else the page only shows results it is given.
 
+- On the public service (`hosted/`) the page finds the service by itself and shows the same box; one request returns the result.
 - Or put a `status.json` next to `index.html`; the page loads it. Or open a result file, or paste the JSON
   printed by `verify_site.py --json`.
 - `sample-status.json` is a real result from 2026-11-13 (two nodes, one release). It is a sample, not a

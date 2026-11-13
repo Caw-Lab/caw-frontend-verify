@@ -192,12 +192,14 @@
 
   // Local mode: only when this page is served by verify/serve_local.py on this computer, which answers
   // /api/info. Anywhere else the box stays hidden and the page only shows results it is given.
-  var local = { on: false, token: '', busy: false };
+  // mode: 'local' (served by verify/serve_local.py on this computer; jobs, token) or 'hosted' (the public
+  // service; one request returns the result). Anywhere else the box stays hidden.
+  var local = { on: false, mode: '', token: '', busy: false };
 
   function api(path, opts) {
     opts = opts || {};
     opts.cache = 'no-store'; opts.credentials = 'omit'; opts.redirect = 'error';
-    opts.headers = Object.assign({ 'X-Token': local.token }, opts.headers || {});
+    opts.headers = Object.assign({ 'X-Token': local.token, 'X-Requested-With': 'caw-frontend-verify' }, opts.headers || {});
     return fetch(path, opts).then(function (r) {
       return r.json().then(function (j) { return { ok: r.ok, status: r.status, body: j }; });
     });
@@ -233,19 +235,25 @@
     api('/api/check', { method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ site: site }) }).then(function (r) {
       var j = r.body || {};
-      if (r.ok && typeof j.job === 'string') { pollJob(j.job); return; }
+      if (local.mode === 'hosted' && r.ok && Array.isArray(j.releases)) { setBusy(false); show(j); return; }
+      if (local.mode === 'local' && r.ok && typeof j.job === 'string') { pollJob(j.job); return; }
       setBusy(false);
-      message(r.status === 429 ? t().checkBusy : t().checkFailed + (typeof j.error === 'string' ? ': ' + j.error.slice(0, 200) : ''));
+      message(r.status === 429 ? (local.mode === 'hosted' ? t().rateLimited : t().checkBusy) : t().checkFailed + (typeof j.error === 'string' ? ': ' + j.error.slice(0, 200) : ''));
     }, function () { setBusy(false); message(t().checkFailed); });
   }
 
   function detectLocal(done) {
-    var h = location.hostname;
-    if (location.protocol !== 'http:' || (h !== '127.0.0.1' && h !== 'localhost')) { done(false); return; }
+    var h = location.hostname, p = location.protocol;
+    var loopback = h === '127.0.0.1' || h === 'localhost';
+    if (!((p === 'http:' && loopback) || p === 'https:')) { done(false); return; }
     api('/api/info').then(function (r) {
       var b = r.body || {};
-      if (r.ok && b.local === true && typeof b.token === 'string') {
-        local.on = true; local.token = b.token;
+      if (p === 'http:' && r.ok && b.local === true && typeof b.token === 'string') {
+        local.on = true; local.mode = 'local'; local.token = b.token;
+      } else if (p === 'https:' && r.ok && b.hosted === true) {
+        local.on = true; local.mode = 'hosted';
+      }
+      if (local.on) {
         $('checker').hidden = false;
         $('loader').hidden = true; // results are shown directly; opening or pasting a result file is not needed
         $('how').hidden = true; // the box replaces the command example

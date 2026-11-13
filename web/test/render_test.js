@@ -161,11 +161,17 @@ test('the page only talks to its own directory and its own local API, without re
   assert.ok(!/XMLHttpRequest|WebSocket|sendBeacon|EventSource|importScripts/.test(src));
 });
 
-test('the check box shows only when the local server answers, and is hidden in the markup otherwise', () => {
+test('the check box shows only when the local server or the hosted service answers for itself', () => {
   assert.ok(/id="checker"[^>]*\shidden/.test(read('index.html')));
   const src = read('app.js');
-  assert.ok(/location\.protocol !== 'http:'/.test(src) && /'127\.0\.0\.1'/.test(src));
-  assert.ok(/b\.local === true/.test(src));
+  // local: only a loopback page over http that answers local:true with a token
+  assert.ok(/p === 'http:' && loopback/.test(src) && /'127\.0\.0\.1'/.test(src));
+  assert.ok(/p === 'http:' && r\.ok && b\.local === true && typeof b\.token === 'string'/.test(src));
+  // hosted: only over https, and only when the page's own origin says hosted:true
+  assert.ok(/p === 'https:' && r\.ok && b\.hosted === true/.test(src));
+  // a page opened from a file, or over http away from loopback, never shows the box
+  assert.ok(/!\(\(p === 'http:' && loopback\) \|\| p === 'https:'\)/.test(src));
+  assert.ok(/'X-Requested-With': 'caw-frontend-verify'/.test(src));
 });
 
 test('data is shown with textContent, and no script sets a link or a source from data', () => {
@@ -278,7 +284,7 @@ test('opening or pasting a result file is hidden when the check box is shown, an
   const html = read('index.html'), src = read('app.js'), css = read('style.css');
   assert.ok(/id="loader"/.test(html));
   assert.ok(!/id="loader"[^>]*\shidden/.test(html), 'it must be visible unless the local server answers');
-  assert.ok(/\$\('checker'\)\.hidden = false;[\s\S]{0,120}\$\('loader'\)\.hidden = true/.test(src));
+  assert.ok(/\$\('checker'\)\.hidden = false;[\s\S]{0,160}\$\('loader'\)\.hidden = true/.test(src));
   assert.ok(/id="how"/.test(html) && !/id="how"[^>]*\shidden/.test(html));
   assert.ok(/\$\('how'\)\.hidden = true/.test(src), 'the command example is hidden with the box');
   assert.ok(/\.loader\[hidden\]\s*\{\s*display:\s*none/.test(css), 'the hidden attribute must win over the flex layout');

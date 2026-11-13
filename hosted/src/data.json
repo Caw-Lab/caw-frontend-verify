@@ -1,0 +1,61 @@
+{
+ "generatedFrom": "references/releases.json",
+ "releases": [
+  {
+   "id": "upstream-master-97cd13f3-testnet",
+   "title": "Contract list of Gilgamesh’s master (V2), as of 2026-09-21",
+   "titleJa": "Gilgamesh の master(V2)のコントラクト一覧(2026-09-21 時点)",
+   "sourceDesc": "Gilgamesh’s master branch (GilgameshCaw/Caw, commit 97cd13f3 as of 2026-09-21)",
+   "sourceDescJa": "Gilgamesh の master ブランチ(GilgameshCaw/Caw の 2026-09-21 時点のコミット 97cd13f3)",
+   "publisher": {
+    "name": "GilgameshCaw (upstream repository)",
+    "kind": "upstream"
+   },
+   "network": "testnet",
+   "source": {
+    "repo": "GilgameshCaw/Caw",
+    "commit": "97cd13f3a1423f702d411472fdd2b2a2e7bfbd59",
+    "tagged": false
+   },
+   "lineage": {
+    "basedOn": null,
+    "note": "the upstream repository as it is at this commit (the tip of master on 2026-09-21), nothing added",
+    "noteJa": "上流のリポジトリの、このコミット時点(2026-09-21 の master の先頭)そのままで、手を加えていません"
+   },
+   "fingerprint": {
+    "schemaVersion": 1,
+    "kind": "caw-frontend-address-fingerprint",
+    "name": "upstream-master-97cd13f3-clean-build",
+    "addresses": [
+     "0x35c27e4bcc13101acdf6418deded99ccd3838075",
+     "0x3ba577936ff6cfe07dc2d00e6669436c6dace319",
+     "0x5613353c6b6f55fbc82487d36a5316a2cade7ee0",
+     "0x56817dc696448135203c0556f702c6a953260411",
+     "0x6289fa33b3542ccc6730599f6f3d87f565ce5d35",
+     "0x66da3a1fd97c175f74e5f3aabbe630b08f2c6c8a",
+     "0x73246104f57001edc6d0659fa37afb672a76e763",
+     "0x858f60fc71bafbdc6ba170acc7dc8974f6270cbd",
+     "0x918082ab668d7661bce65c3caaf047648f7d4271",
+     "0x93593a023629eb84b389770d76a81c5f982f02a9",
+     "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+     "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+     "0xdac17f958d2ee523a2206206994597c13d831ec7",
+     "0xf3b9569f82b18aef890de263b84189bd33ebe452",
+     "0xfffef4bd46c222aa566cf1f17e7f47c1edde225b"
+    ]
+   },
+   "labels": {
+    "0x35c27e4bcc13101acdf6418deded99ccd3838075": "L1.CawNetworkManager",
+    "0x3ba577936ff6cfe07dc2d00e6669436c6dace319": "L1.CawProfile",
+    "0x5613353c6b6f55fbc82487d36a5316a2cade7ee0": "L1.CawProfileMinter",
+    "0x56817dc696448135203c0556f702c6a953260411": "L1.MintableCaw",
+    "0x66da3a1fd97c175f74e5f3aabbe630b08f2c6c8a": "L1.CawProfileQuoter",
+    "0x73246104f57001edc6d0659fa37afb672a76e763": "L2.CawActions",
+    "0x858f60fc71bafbdc6ba170acc7dc8974f6270cbd": "L1.CawProfileMarketplace",
+    "0x918082ab668d7661bce65c3caaf047648f7d4271": "L1.SmartEOA",
+    "0x93593a023629eb84b389770d76a81c5f982f02a9": "L2.CawProfileLedger",
+    "0xfffef4bd46c222aa566cf1f17e7f47c1edde225b": "L1.CawProfileLens"
+   }
+  }
+ ]
+}
