@@ -9,6 +9,24 @@ It does **not** check the files of a site (there is no file fingerprint yet; the
 chain. A match means "the entry script names exactly the published addresses". It does not show that the files
 are unchanged, and it says nothing about what a node's server side reads.
 
+## Where it can run
+
+As written, this service is a **Cloudflare Worker**: it relies on the Workers runtime for the page files (`ASSETS`),
+the cache (`caches.default`), the address of the caller (`cf-connecting-ip`), and, above all, for refusing requests to
+private networks. Anyone with a Cloudflare account can deploy it (see "Deploy" below).
+
+A version for an ordinary server is **not provided**. The check itself (`src/check.js`, `src/guard.js`) is plain
+JavaScript and runs in Node, which is how the tests run it; what is missing is an entry point for Node and, more
+important, the protection that the platform gives for free. On a server, the look-up of the name before the request
+becomes the only protection against requests to internal addresses, and it can be bypassed by a name that changes its
+answer between the look-up and the request. A server version would need at least: connecting to the address that was
+checked instead of looking the name up again; firewall rules that refuse private, loopback and link-local addresses
+(including the cloud metadata address) for the service's user; an unprivileged user; and TLS and rate limits in front
+(nginx or Caddy). Without these it should not be exposed to the public.
+
+The command-line tool (`verify/verify_site.py`) and the local page (`verify/serve_local.py`) need only Python 3 and run
+anywhere. The local page is made for one person's own computer (it answers only on `127.0.0.1`); it is not a public service.
+
 ## What it does
 
 `POST /api/check` with `{"site": "cawnest.com"}` (the `https://` can be left out) makes two requests to the site

@@ -14,8 +14,10 @@ Type the address of a CAW node: the service reads the site's main script and com
 with those of Gilgamesh's master branch (V2). It does not check the files yet, and one address may ask only a few
 times a minute. A result states what was found; it is not a guarantee of safety.
 
-The same service can be run by anyone: see [`hosted/`](hosted/README.md). To run the checks on your own computer
-instead (Python 3 only):
+The service is a Cloudflare Worker: anyone with a Cloudflare account can run the same one (see [`hosted/`](hosted/README.md)).
+A version for an ordinary server is not provided yet. It would need more protection against requests to internal
+addresses than the platform gives (see `hosted/README.md`). The checks themselves run anywhere with Python 3; to run
+them on your own computer or server:
 
 ```sh
 git clone https://github.com/Zinsanjp/caw-frontend-verify.git
