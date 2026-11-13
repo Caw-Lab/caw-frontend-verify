@@ -262,6 +262,19 @@
     }, function () { done(false); });
   }
 
+  // A link such as ?site=cawnest.com puts that address into the box. It never starts the check: the person
+  // presses the button, so that a link placed on another page cannot make a visitor's browser check a site.
+  function prefillFromLink() {
+    var v = null;
+    try { v = new URLSearchParams(location.search).get('site'); } catch (e) { v = null; }
+    if (typeof v !== 'string') return;
+    v = v.trim();
+    if (!v || v.length > 300 || /[\u0000-\u001f\u007f]/.test(v)) return;
+    $('check-input').value = v;
+    message(t().prefilled);
+    try { $('btn-check').focus(); } catch (e) { /* focus is a convenience only */ }
+  }
+
   function setLang(l) {
     state.lang = l;
     guardedStorage(function () { localStorage.setItem('lang', l); });
@@ -290,7 +303,7 @@
     $('check-input').addEventListener('keydown', function (ev) { if (ev.key === 'Enter') startCheck(); });
 
     detectLocal(function (isLocal) {
-      if (isLocal) return;
+      if (isLocal) { prefillFromLink(); return; }
       fetch('status.json', { cache: 'no-store', credentials: 'omit', redirect: 'error' }).then(function (r) {
         if (!r.ok) throw new Error('no status file');
         return r.text();

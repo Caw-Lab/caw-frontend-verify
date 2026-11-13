@@ -284,6 +284,17 @@ test('the title does not claim to be only about contracts, and the vague term is
   assert.match(V.T.en.lead, /CAW/);
 });
 
+test('a link can fill in the address, but never starts the check', () => {
+  const src = read('app.js');
+  const m = /function prefillFromLink\(\) \{([\s\S]*?)\n  \}\n/.exec(src);
+  assert.ok(m, 'prefillFromLink exists');
+  assert.ok(/URLSearchParams/.test(m[1]) && /\.get\('site'\)/.test(m[1]));
+  assert.ok(!/startCheck|api\(|fetch\(|innerHTML/.test(m[1]), 'it only fills the box');
+  assert.ok(/\.value = v/.test(m[1]) && /length > 300/.test(m[1]));
+  assert.ok(/if \(isLocal\) \{ prefillFromLink\(\); return; \}/.test(src), 'only where the box is shown');
+  for (const lang of ['en', 'ja']) assert.ok(V.T[lang].prefilled.length > 10);
+});
+
 test('opening or pasting a result file is hidden when the check box is shown, and shown otherwise', () => {
   const html = read('index.html'), src = read('app.js'), css = read('style.css');
   assert.ok(/id="loader"/.test(html));
