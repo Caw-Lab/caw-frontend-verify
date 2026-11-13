@@ -3,6 +3,7 @@
 Part of [caw-frontend-verify](../README.md). A public service that checks, for any site, **which contract
 addresses its main script names**, and compares them with a published build. It is the contract check of
 [`bridge`](../bridge/README.md), ported to a Cloudflare Worker, behind the page of [`web`](../web/README.md).
+An example instance, run by the author as a trial, is at https://caw-frontend-verify.zinsanjp.workers.dev (see the main README).
 
 It does **not** check the files of a site (there is no file fingerprint yet; the page says so), and it reads no
 chain. A match means "the entry script names exactly the published addresses". It does not show that the files

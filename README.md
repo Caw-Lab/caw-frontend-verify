@@ -6,6 +6,24 @@ means "consistent with the reference", not "safe".
 
 Status: prototypes. The three checks exist (`contract-check`, `bridge`, `frontend-check`) and `verify` runs them together from a command line; a static page (`web/`) shows their results; a scheduled monitor does not exist yet.
 
+## Try it
+
+An example instance of the contract check runs at **https://caw-frontend-verify.zinsanjp.workers.dev**. It is run by
+one person, the author of this repository, as a trial. It is not run by the CAW project, and it may change or stop.
+Type the address of a CAW node: the service reads the site's main script and compares the contract addresses in it
+with those of Gilgamesh's master branch (V2). It does not check the files yet, and one address may ask only a few
+times a minute. A result states what was found; it is not a guarantee of safety.
+
+The same service can be run by anyone: see [`hosted/`](hosted/README.md). To run the checks on your own computer
+instead (Python 3 only):
+
+```sh
+git clone https://github.com/Zinsanjp/caw-frontend-verify.git
+cd caw-frontend-verify/verify
+python3 verify_site.py cawnest.com     # from the command line
+python3 serve_local.py                 # or a local page with a box for the address
+```
+
 ## Layout
 
 | folder | what | status |
