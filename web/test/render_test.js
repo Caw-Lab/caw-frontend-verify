@@ -273,6 +273,17 @@ test('the source of the code is named concretely, in both languages, and cut lik
   assert.ok(/replace\('\{source\}'/.test(read('app.js')));
 });
 
+test('a note on an address is kept (cut to a length), and only as text', () => {
+  const cn = { verdict: 'DIFFERENT', missing: [{ address: '0x' + 'a'.repeat(40), label: null, note: 'N'.repeat(400), noteJa: '注記' }],
+    unexpected: [{ address: '0x' + 'b'.repeat(40), label: null }] };
+  const m = V.normalize(result([rel({ facts: { frontendFiles: { verdict: 'NOT_AVAILABLE' }, contractsNamed: cn, contractsOnChain: chainPass } })]));
+  const f = m.sites[0].releases[0].facts.contractsNamed;
+  assert.equal(f.missing[0].note.length, 300);
+  assert.equal(f.missing[0].noteJa, '注記');
+  assert.equal(f.unexpected[0].note, null);
+  assert.ok(/addr-note/.test(read('app.js')) && !/innerHTML/.test(read('app.js')), 'notes are put in as text');
+});
+
 test('the title does not claim to be only about contracts, and the vague term is gone', () => {
   assert.ok(!/コントラクト一覧との照合|Contract list check/.test(JSON.stringify(V.T)));
   assert.ok(!/上流の GitHub|upstream GitHub/.test(JSON.stringify(V.T)));

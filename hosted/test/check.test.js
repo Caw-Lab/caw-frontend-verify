@@ -2,7 +2,7 @@
 // Copyright (c) 2026 zinsanjp and contributors
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { check, assemble, failed, extract, genericLabel, pageScripts, validateFingerprint, Invalid, Unreadable, MAX_PRELOADS_READ } from '../src/check.js';
+import { check, assemble, failed, extract, genericLabel, pageScripts, validateFingerprint, looksLikeHtml, Invalid, Unreadable, MAX_PRELOADS_READ } from '../src/check.js';
 
 const A = (n) => '0x' + n.toString(16).padStart(40, 'a').slice(-40);
 const REQ = [A(0x1111), A(0x2222), A(0x3333)];
@@ -140,4 +140,55 @@ test('assemble: matched only on MATCH; an unreadable site is incomplete and neve
   const u = assemble(rel, 'https://x.org', failed('UNREADABLE', 'x'.repeat(500))).releases[0];
   assert.equal(u.matched, false); assert.equal(u.incomplete, true);
   assert.equal(u.facts.contractsNamed.reason.length, 200);
+});
+
+// ---------------------------------------------------------------- a script that is an HTML page, and notes
+const HTML_PAGE = '<!doctype html><html><head></head><body><div id="root"></div></body></html>';
+
+test('the entry script answers with an HTML page: unreadable, never a verdict on addresses', async () => {
+  for (const body of [HTML_PAGE, '\n  ' + HTML_PAGE, '\ufeff' + HTML_PAGE.toUpperCase(), '<html lang="en"></html>']) {
+    const s = site({ 'index.html': page(), 'assets/index-AAA.js': body });
+    await assert.rejects(() => check(s, 'https://x.org', FP, LABELS), (e) => e instanceof Unreadable && /HTML page/.test(e.message));
+  }
+});
+
+test('a real script that merely mentions html is not mistaken for a page', async () => {
+  assert.equal(looksLikeHtml(enc('const a="<!doctype html>";')), false);
+  assert.equal(looksLikeHtml(enc('import"./v.js";const h="<html>";')), false);
+  assert.equal(looksLikeHtml(enc('')), false);
+  const s = site({ 'index.html': page(), 'assets/index-AAA.js': js(...REQ) + 'const h="<html></html>";' });
+  assert.equal((await check(s, 'https://x.org', FP, LABELS)).verdict, 'MATCH');
+});
+
+test('a preload that answers with an HTML page only weakens the presence check', async () => {
+  const s = site({
+    'index.html': page('<link rel="modulepreload" href="/assets/vendor.js">'),
+    'assets/index-AAA.js': js(REQ[0], REQ[1]),
+    'assets/vendor.js': HTML_PAGE,
+  });
+  const r = await check(s, 'https://x.org', FP, LABELS);
+  assert.equal(r.verdict, 'DIFFERENT');
+  assert.deepEqual(r.missing.map((m) => m.address), [REQ[2]]);
+});
+
+const NOTE = { en: 'A note.', ja: '注記。' };
+
+test('notes are attached to missing and unexpected addresses only', async () => {
+  const other = A(0x9999);
+  const fp = { ...FP, addressNotes: { [other]: NOTE, [REQ[2]]: NOTE, [A(0x7777)]: NOTE } };
+  const s = site({ 'index.html': page(), 'assets/index-AAA.js': js(REQ[0], REQ[1], other) });
+  const r = await check(s, 'https://x.org', fp, LABELS);
+  assert.deepEqual(r.unexpected, [{ address: other, label: null, note: 'A note.', noteJa: '注記。' }]);
+  assert.deepEqual(r.missing, [{ address: REQ[2], label: null, note: 'A note.', noteJa: '注記。' }]);
+  const plain = await check(s, 'https://x.org', FP, LABELS);
+  assert.deepEqual(plain.unexpected, [{ address: other, label: null }]);
+});
+
+test('notes never change a verdict, and bad notes are refused', async () => {
+  const s = site({ 'index.html': page(), 'assets/index-AAA.js': js(...REQ) });
+  assert.equal((await check(s, 'https://x.org', { ...FP, addressNotes: { [A(0x7777)]: NOTE } }, LABELS)).verdict, 'MATCH');
+  for (const bad of [{ '0x12': NOTE }, { [A(0x7777).replace('7', 'A')]: NOTE }, { [A(0x7777)]: { en: 'x' } },
+    { [A(0x7777)]: { en: 'x'.repeat(301), ja: 'y' } }, [NOTE], 'text']) {
+    assert.ok(validateFingerprint({ ...FP, addressNotes: bad }).some((p) => /addressNotes/.test(p)), JSON.stringify(bad).slice(0, 40));
+  }
 });

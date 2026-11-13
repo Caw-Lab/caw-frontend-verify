@@ -33,7 +33,10 @@
     d.appendChild(el('summary', null, title + ' (' + items.length + ')'));
     var ul = el('ul', 'addr');
     items.forEach(function (a) {
-      ul.appendChild(el('li', null, a.address + (a.label ? '  ' + a.label : '')));
+      var li = el('li', null, a.address + (a.label ? '  ' + a.label : ''));
+      var note = state.lang === 'ja' ? (a.noteJa || a.note) : (a.note || a.noteJa);
+      if (note) li.appendChild(el('span', 'addr-note', note));
+      ul.appendChild(li);
     });
     d.appendChild(ul);
     return d;

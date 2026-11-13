@@ -125,6 +125,33 @@ scenario("24 only an external script", "UNREADABLE", ["entry script"],
          build_kw={"index": '<script type="module" src="https://cdn.example.com/app.js"></script>'})
 scenario("25 entry script larger than the limit", "UNREADABLE", ["larger"], limits=(2 * 1024 * 1024, 100))
 
+HTML_PAGE = "<!doctype html><html><head></head><body><div id=\"root\"></div></body></html>"
+
+
+def html_entry_site(root):
+    build(root)
+    open(os.path.join(root, ENTRY), "w").write("\n  " + HTML_PAGE)
+
+
+scenario("26 the entry script path answers with an HTML page (the script is not served)", "UNREADABLE", ["HTML page"],
+         builder=html_entry_site)
+
+NOTE = {"en": "A note in English.", "ja": "日本語の注記。"}
+scenario("27 a note on an unexpected address is shown", "DIFFERENT", ["UNEXPECTED", "A note in English."],
+         build_kw={"entry_extra": f'const x="{UNOFFICIAL[1]}";'},
+         fp_mutate=lambda f: f.__setitem__("addressNotes", {UNOFFICIAL[1]: NOTE}) or f)
+scenario("28 a note on a missing address is shown", "DIFFERENT", ["MISSING", "A note in English."],
+         build_kw={"entry_addrs": OFFICIAL[1:]},
+         fp_mutate=lambda f: f.__setitem__("addressNotes", {OFFICIAL[0]: NOTE}) or f)
+scenario("29 notes do not change a match", "MATCH",
+         fp_mutate=lambda f: f.__setitem__("addressNotes", {UNOFFICIAL[1]: NOTE}) or f)
+for n, bad in (("40 a note on a malformed address", {"0x12": NOTE}),
+               ("41 a note on an address that is not lowercase", {UNOFFICIAL[1].replace("2", "A").replace("0x", "0x"): NOTE}),
+               ("42 a note without the Japanese text", {UNOFFICIAL[1]: {"en": "x"}}),
+               ("43 a note that is too long", {UNOFFICIAL[1]: {"en": "x" * 301, "ja": "y"}}),
+               ("44 notes that are not an object", [NOTE])):
+    scenario(n, "INVALID", ["addressNotes"], fp_mutate=lambda f, bad=bad: f.__setitem__("addressNotes", bad) or f)
+
 
 # ---- network (local server only)
 class H(http.server.BaseHTTPRequestHandler):

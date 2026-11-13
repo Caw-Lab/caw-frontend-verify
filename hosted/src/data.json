@@ -42,7 +42,17 @@
      "0xdac17f958d2ee523a2206206994597c13d831ec7",
      "0xf3b9569f82b18aef890de263b84189bd33ebe452",
      "0xfffef4bd46c222aa566cf1f17e7f47c1edde225b"
-    ]
+    ],
+    "addressNotes": {
+     "0x6289fa33b3542ccc6730599f6f3d87f565ce5d35": {
+      "en": "The Uniswap V2 CAW/WETH pair made on Sepolia for the testnet. The frontend reads it to estimate prices in the mint and top-up screens.",
+      "ja": "テストネット(Sepolia)用に作られた、CAW/WETH の Uniswap V2 ペアです。ミントとチャージの画面で、価格の見積もりに使われます。"
+     },
+     "0x48d20b3e529fb3dd7d91293f80638df582ab2daa": {
+      "en": "The CAW/WETH Uniswap V2 pair on Ethereum mainnet (the upstream example file addresses.ts.example holds it). There is no contract at this address on Sepolia, so a testnet frontend that names it cannot read prices from it.",
+      "ja": "イーサリアムのメインネットにある、CAW/WETH の Uniswap V2 ペアです(上流の見本のファイル addresses.ts.example に入っています)。Sepolia には、このアドレスにコントラクトがないので、これを指しているテストネットのフロントエンドは、価格を読めません。"
+     }
+    }
    },
    "labels": {
     "0x35c27e4bcc13101acdf6418deded99ccd3838075": "L1.CawNetworkManager",

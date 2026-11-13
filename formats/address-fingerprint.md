@@ -10,7 +10,8 @@ compares the entry script of a site with it.
   "name": "release or build the fingerprint belongs to",
   "createdAt": "2026-11-13",
   "derivedFrom": { "description": "how it was made", "entryFile": "assets/index-<hash>.js" },
-  "addresses": ["0x…", "0x…"]
+  "addresses": ["0x…", "0x…"],
+  "addressNotes": { "0x…": { "en": "what this address is", "ja": "the same in Japanese" } }
 }
 ```
 
@@ -19,8 +20,12 @@ compares the entry script of a site with it.
   native-token placeholder, Multicall3, OP-stack predeploys), which say nothing about a deployment.
 - The list is taken from the build itself, so no names are needed (a minified bundle has none). Names
   are added at report time from a contract reference, when one is given.
+- `addressNotes` (optional): short explanations of addresses a reader may see in a result, because they are
+  in the list but missing from a site, or in a site but not in the list. The key is a lowercase address (it
+  may be one that is not in `addresses`); `en` and `ja` are texts of 1 to 300 characters; at most 50 entries.
+  A note is shown next to the address. It never changes a verdict.
 - **Refused as INVALID:** a wrong `kind` or version, an empty list (a fingerprint that checks nothing),
-  a malformed or duplicate address, a generic address.
+  a malformed or duplicate address, a generic address, a malformed `addressNotes`.
 
 ## What a match means
 

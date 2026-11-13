@@ -27,6 +27,8 @@ import urllib.request
 
 ADDR_RE = re.compile(r"0x[0-9a-fA-F]{40}(?![0-9a-fA-F])")
 HEX40 = re.compile(r"^0x[0-9a-fA-F]{40}$")
+MAX_NOTES = 50
+MAX_NOTE_LEN = 300
 MAX_INDEX = 2 * 1024 * 1024
 MAX_SCRIPT = 16 * 1024 * 1024
 TIMEOUT = 20
@@ -167,20 +169,34 @@ def page_scripts(html):
     return entry, pre, external
 
 
+def looks_like_html(raw):
+    """True when a file that should be a script is an HTML page (a site that answers every unknown path with its
+    index page). Its text holds no addresses, which must not be read as 'the site names none of them'."""
+    head = raw[:256].lstrip(b"\xef\xbb\xbf \t\r\n").lower()
+    return head.startswith((b"<!doctype html", b"<html"))
+
+
+def read_script(source, path):
+    raw = source.get(path, MAX_SCRIPT)
+    if looks_like_html(raw):
+        raise Unreadable(f"{path} answers with an HTML page, not a script (the script is not served at this address)")
+    return raw.decode("utf-8", errors="replace")
+
+
 def scan(source):
     """Read the page and its entry script; return what was found."""
     html = source.get("index.html", MAX_INDEX).decode("utf-8", errors="replace")
     entry, pre, external = page_scripts(html)
     if not entry:
         raise Unreadable("index.html has no module entry script")
-    entry_text = source.get(entry, MAX_SCRIPT).decode("utf-8", errors="replace")
+    entry_text = read_script(source, entry)
     all_addrs = set(extract(entry_text))
     read = [entry]
     for p in dict.fromkeys(pre):
         if p == entry:
             continue
         try:
-            all_addrs |= extract(source.get(p, MAX_SCRIPT).decode("utf-8", errors="replace"))
+            all_addrs |= extract(read_script(source, p))
             read.append(p)
         except Unreadable:
             pass  # a preload that cannot be read only weakens the presence check
@@ -226,6 +242,17 @@ def validate_fingerprint(fp):
         gen = [x for x in low if HEX40.match(x) and generic_label(x)]
         if gen:
             p.append(f"addresses: {gen[0]} is a generic address and says nothing about a deployment")
+    notes = fp.get("addressNotes")
+    if notes is not None:
+        if not isinstance(notes, dict) or len(notes) > MAX_NOTES:
+            p.append(f"addressNotes: must be an object with at most {MAX_NOTES} entries")
+        else:
+            for k, v in notes.items():
+                ok = isinstance(k, str) and HEX40.match(k) and k == k.lower() and isinstance(v, dict) and \
+                    all(isinstance(v.get(x), str) and 0 < len(v[x]) <= MAX_NOTE_LEN for x in ("en", "ja"))
+                if not ok:
+                    p.append(f"addressNotes: {str(k)[:60]!r} needs a lowercase address and an 'en' and a 'ja' text of at most {MAX_NOTE_LEN} characters")
+                    break
     return p
 
 
@@ -251,6 +278,8 @@ def check(source, fp, reference=None):
     unexpected = sorted(found["entryAddresses"] - required)
     labels = labels_from_reference(reference)
     present = sorted(required & found["allAddresses"])
+    all_notes = fp.get("addressNotes") or {}
+    notes = {a: all_notes[a] for a in set(missing) | set(unexpected) if a in all_notes}
     return {
         "verdict": "MATCH" if not missing and not unexpected else "DIFFERENT",
         "site": source.name, "entry": found["entry"], "fingerprint": fp.get("name"),
@@ -258,6 +287,7 @@ def check(source, fp, reference=None):
         "missing": [(a, labels.get(a)) for a in missing],
         "unexpected": [(a, labels.get(a)) for a in unexpected],
         "recognized": sorted(labels[a] for a in present if a in labels),
+        "notes": notes,
         "externalScripts": found["externalScripts"], "filesRead": found["filesRead"],
     }
 
@@ -270,12 +300,23 @@ def render(r):
         lines.append(f"recognized in the contract reference: {', '.join(r['recognized'])}")
     for a, lb in r["missing"]:
         lines.append(f"  MISSING     {a}" + (f"  ({lb})" if lb else ""))
+        if a in r["notes"]:
+            lines.append(f"              {r['notes'][a]['en']}")
     for a, lb in r["unexpected"]:
         lines.append(f"  UNEXPECTED  {a}" + (f"  ({lb})" if lb else "") + "  (in the entry script, not in the fingerprint)")
+        if a in r["notes"]:
+            lines.append(f"              {r['notes'][a]['en']}")
     lines.append(f"VERDICT: {r['verdict']}")
     if r["verdict"] == "MATCH":
         lines.append("note: this says which contracts the entry script names; it does not show the files are unchanged.")
     return "\n".join(lines)
+
+
+def with_note(entry, notes):
+    n = notes.get(entry["address"])
+    if n:
+        entry["note"], entry["noteJa"] = n["en"], n["ja"]
+    return entry
 
 
 CODES = {"MATCH": 0, "DIFFERENT": 1, "INVALID": 2, "UNREADABLE": 3}
@@ -319,8 +360,8 @@ def main(argv=None):
         if as_json:
             print(json.dumps({"tool": "bridge", "verdict": r["verdict"], "site": r["site"], "fingerprint": r["fingerprint"],
                               "required": r["required"], "present": r["present"], "entry": r["entry"],
-                              "missing": [{"address": a, "label": l} for a, l in r["missing"]],
-                              "unexpected": [{"address": a, "label": l} for a, l in r["unexpected"]],
+                              "missing": [with_note({"address": a, "label": l}, r["notes"]) for a, l in r["missing"]],
+                              "unexpected": [with_note({"address": a, "label": l}, r["notes"]) for a, l in r["unexpected"]],
                               "recognized": r["recognized"], "externalScripts": r["externalScripts"]}))
         else:
             print(render(r))

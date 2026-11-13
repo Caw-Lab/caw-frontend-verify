@@ -33,6 +33,8 @@ not be read; never a pass).
 - does not follow redirects (the site must answer at the address given);
 - reads `index.html`, the first module script (the entry script) and the preloaded module chunks, with a
   size limit and a timeout; a script path that leaves the site is refused.
+- a script path that answers with an HTML page (a site that serves its index page for every unknown path) is
+  `UNREADABLE`, not a script without addresses.
 
 ## Reading the result
 

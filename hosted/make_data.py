@@ -47,7 +47,8 @@ def build():
             "publisher": r["publisher"], "network": r.get("network"), "source": r["source"],
             "lineage": r.get("lineage"),
             "fingerprint": {"schemaVersion": fp["schemaVersion"], "kind": fp["kind"], "name": fp["name"],
-                            "addresses": sorted(required)},
+                            "addresses": sorted(required),
+                            **({"addressNotes": fp["addressNotes"]} if fp.get("addressNotes") else {})},
             "labels": dict(sorted(labels.items())),
         })
     return {"generatedFrom": "references/releases.json", "releases": releases}

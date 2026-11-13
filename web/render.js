@@ -28,7 +28,8 @@
 
   function addressList(x) {
     return arr(x).map(function (e) {
-      return isObj(e) ? { address: text(e.address, 80), label: text(e.label, 120) || null } : null;
+      return isObj(e) ? { address: text(e.address, 80), label: text(e.label, 120) || null,
+        note: text(e.note, 300) || null, noteJa: text(e.noteJa, 300) || null } : null;
     }).filter(Boolean);
   }
 
