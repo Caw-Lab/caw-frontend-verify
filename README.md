@@ -34,6 +34,12 @@ about a node's backend or its configuration.
 Original code, written from scratch (see each tool's README for the inputs it uses). Nothing was
 copied from the upstream Verifier, from other pull requests, or from other projects.
 
+This repository contains no code of the CAW client. The workflow in `.github/workflows/repro.yml`
+fetches a published upstream commit at run time and builds it in a temporary directory; what is kept
+and published is only file names, hashes and package lists. Built files are not stored or published,
+and no file of the upstream repository is copied into this one. Contract addresses and chain state
+are public facts read at run time.
+
 ## License
 
 MIT, see [`LICENSE`](LICENSE). Copyright (c) 2026 zinsanjp and contributors. Contributions are
