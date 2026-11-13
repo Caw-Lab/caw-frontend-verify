@@ -115,8 +115,8 @@
   // ---------------------------------------------------------------- wording
   var T = {
     en: {
-      title: 'Frontend integrity check',
-      lead: 'Compares the frontend files a site serves, and the contract addresses it uses, with published code, and states what was found. It does not say which code is right or which one to trust.',
+      title: 'CAW frontend integrity check',
+      lead: 'For websites that serve the CAW Protocol (decentralized social network) frontend: compares the frontend files a site serves, and the contract addresses it uses, with published CAW code, and states what was found. It does not say which code is right or which one to trust.',
       unofficial: 'Not an official CAW page. “Same” means the site was found identical to the published code in the ways shown below; it is not a guarantee of safety.',
       generated: 'Results made',
       loadFile: 'Open a result file', paste: 'Paste a result', show: 'Show', pastePlaceholder: 'Paste the JSON printed by verify_site.py --json',
@@ -152,8 +152,8 @@
       lang: 'Language'
     },
     ja: {
-      title: 'フロントエンド整合性検証',
-      lead: 'サイトが配っているフロントエンドのファイルと、サイトが使っているコントラクトのアドレスを、公開されているコードと比べて、分かったことを並べます。どのコードが正しいか、どれを信頼すべきかは、判断しません。',
+      title: 'CAW フロントエンド整合性検証',
+      lead: 'CAW Protocol(分散型SNS)のフロントエンドを配っているサイトについて、サイトが配っているフロントエンドのファイルと、サイトが使っているコントラクトのアドレスを、公開されている CAW のコードと比べて、分かったことを並べます。どのコードが正しいか、どれを信頼すべきかは、判断しません。',
       unofficial: 'CAW の公式ページではありません。「同じ」は、下に書いた点で、公開されているコードと同じだと分かった、という意味で、安全の保証ではありません。',
       generated: '結果を作った時刻',
       loadFile: '結果ファイルを開く', paste: '結果を貼り付け', show: '表示', pastePlaceholder: 'verify_site.py --json が出力した JSON を貼り付けてください',

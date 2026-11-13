@@ -277,7 +277,11 @@ test('the title does not claim to be only about contracts, and the vague term is
   assert.ok(!/コントラクト一覧との照合|Contract list check/.test(JSON.stringify(V.T)));
   assert.ok(!/上流の GitHub|upstream GitHub/.test(JSON.stringify(V.T)));
   assert.match(V.T.ja.title, /フロントエンド/);
-  assert.match(V.T.en.title, /Frontend/);
+  assert.match(V.T.en.title, /frontend/i);
+  assert.match(V.T.ja.title, /CAW/);
+  assert.match(V.T.en.title, /CAW/);
+  assert.match(V.T.ja.lead, /CAW/);
+  assert.match(V.T.en.lead, /CAW/);
 });
 
 test('opening or pasting a result file is hidden when the check box is shown, and shown otherwise', () => {
